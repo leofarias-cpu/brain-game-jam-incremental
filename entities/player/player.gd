@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
-
 @export var SPEED = 30.0
+@export var grazing_area: Area2D
+@export var sprite: Sprite2D
+
+signal graze
+
+func _ready() -> void:
+	grazing_area.area_entered.connect(_on_graze_area_area_entered)
 
 func _physics_process(delta: float) -> void:
 
@@ -18,3 +24,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0
 	move_and_slide()
+
+
+func _on_graze_area_area_entered(area: Area2D) -> void:
+	graze.emit()
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite, 'modulate', Color(0.431, 0.865, 0.51, 1.0), 0.2)
+	tween.tween_property(sprite, 'modulate', Color(1.0, 1.0, 1.0, 1.0), 0.1)

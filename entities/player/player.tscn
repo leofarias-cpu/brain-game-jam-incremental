@@ -9,9 +9,12 @@ radius = 11.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fu2m"]
 radius = 20.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1423667927]
+[node name="Player" type="CharacterBody2D" unique_id=1423667927 node_paths=PackedStringArray("grazing_area", "sprite")]
+collision_mask = 4
 script = ExtResource("1_abrql")
 SPEED = 60.0
+grazing_area = NodePath("Graze area")
+sprite = NodePath("SchemingEmoji")
 
 [node name="SchemingEmoji" type="Sprite2D" parent="." unique_id=860333071]
 position = Vector2(0, 1.5258789e-05)
@@ -22,6 +25,7 @@ texture = ExtResource("1_symyc")
 shape = SubResource("CircleShape2D_c4dok")
 
 [node name="Graze area" type="Area2D" parent="." unique_id=1209545898]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graze area" unique_id=1469078170]
 shape = SubResource("CircleShape2D_7fu2m")
