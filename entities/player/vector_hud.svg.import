@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddongecjvvjh0"
-path="res://.godot/imported/schemingEmoji.jpg-201954fc60fca59c08c4cb142bd75f2a.ctex"
+uid="uid://cd1egh60l6lpw"
+path="res://.godot/imported/vector_hud.svg-48362b94c93e589229d380cef56724db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/schemingEmoji.jpg"
-dest_files=["res://.godot/imported/schemingEmoji.jpg-201954fc60fca59c08c4cb142bd75f2a.ctex"]
+source_file="res://entities/player/vector_hud.svg"
+dest_files=["res://.godot/imported/vector_hud.svg-48362b94c93e589229d380cef56724db.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -1,32 +1,51 @@
 [gd_scene format=3 uid="uid://budtopphq6vwo"]
 
 [ext_resource type="Script" uid="uid://bb3cp5e2jyyct" path="res://entities/player/player.gd" id="1_abrql"]
-[ext_resource type="Texture2D" uid="uid://ddongecjvvjh0" path="res://entities/player/schemingEmoji.jpg" id="1_symyc"]
+[ext_resource type="Texture2D" uid="uid://cd1egh60l6lpw" path="res://entities/player/vector_hud.svg" id="2_abrql"]
+[ext_resource type="Script" uid="uid://bbpepq7jgbo4a" path="res://entities/player/graze_area.gd" id="3_sglur"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4dok"]
 radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fu2m"]
-radius = 20.0
+radius = 23.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1423667927 node_paths=PackedStringArray("grazing_area", "sprite")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
+radius = 11.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1423667927 node_paths=PackedStringArray("grazing_area", "grazing_collision_shape", "hitbox", "sprite")]
 collision_mask = 4
 script = ExtResource("1_abrql")
 SPEED = 60.0
 grazing_area = NodePath("Graze area")
+grazing_collision_shape = NodePath("Graze area/CollisionShape2D")
+hitbox = NodePath("Hitbox")
 sprite = NodePath("SchemingEmoji")
 
 [node name="SchemingEmoji" type="Sprite2D" parent="." unique_id=860333071]
-position = Vector2(0, 1.5258789e-05)
-scale = Vector2(0.029891303, 0.029891262)
-texture = ExtResource("1_symyc")
+position = Vector2(0.1487772, 0.14878531)
+scale = Vector2(0.46175414, 0.46175382)
+texture = ExtResource("2_abrql")
+region_enabled = true
+region_rect = Rect2(292, 83, 47, 47)
 
-[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1666639788]
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=1666639788]
 shape = SubResource("CircleShape2D_c4dok")
 
-[node name="Graze area" type="Area2D" parent="." unique_id=1209545898]
+[node name="Graze area" type="Area2D" parent="." unique_id=1209545898 node_paths=PackedStringArray("collision")]
 collision_mask = 2
+script = ExtResource("3_sglur")
+collision = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Graze area" unique_id=1469078170]
 shape = SubResource("CircleShape2D_7fu2m")
 debug_color = Color(0.4875322, 0.877868, 0.63034904, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=178867213]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1489840914]
+shape = SubResource("CircleShape2D_tga20")
+debug_color = Color(0.7, 0, 0.21000013, 0.41960785)
+
+[connection signal="area_entered" from="Graze area" to="Graze area" method="_on_area_entered"]

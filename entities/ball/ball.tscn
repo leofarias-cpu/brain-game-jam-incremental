@@ -15,18 +15,28 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
+radius = 8.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivg0e"]
 radius = 7.5
 
-[node name="Ball" type="Area2D" unique_id=723800753]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1851846432]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("1_61umk")
-velocity = 20.0
+speed = 40.0
 
 [node name="InsaneGradientThing" type="Sprite2D" parent="." unique_id=1300600148]
 scale = Vector2(0.125, 0.125)
 texture = SubResource("GradientTexture2D_ivg0e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1162393346]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=195362136]
+shape = SubResource("CircleShape2D_tga20")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=723800753]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1162393346]
 shape = SubResource("CircleShape2D_ivg0e")
