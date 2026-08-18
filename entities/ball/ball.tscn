@@ -16,14 +16,14 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
-radius = 8.0
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivg0e"]
 radius = 7.5
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1851846432]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 5
 script = ExtResource("1_61umk")
 speed = 40.0
 
