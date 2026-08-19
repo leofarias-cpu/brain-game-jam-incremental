@@ -14,7 +14,7 @@ func _ready() -> void:
 	grazing_area.area_entered.connect(_on_graze_area_area_entered)
 	hitbox.area_entered.connect(_on_hitbox_area_entered)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y := Input.get_axis("up", "down")

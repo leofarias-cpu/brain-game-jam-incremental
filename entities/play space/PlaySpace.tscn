@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cejcjsd3sgueb"]
+
+[ext_resource type="Script" uid="uid://boghgg5yuckof" path="res://entities/play space/play_space.gd" id="1_juvy7"]
+
+[sub_resource type="Gradient" id="Gradient_juvy7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_crql4"]
+gradient = SubResource("Gradient_juvy7")
+width = 10
+height = 10
+
+[sub_resource type="Gradient" id="Gradient_crql4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.18039216, 0.38039216, 0.8509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tga20"]
+gradient = SubResource("Gradient_crql4")
+width = 12
+height = 12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y06by"]
+size = Vector2(1, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fu2m"]
+size = Vector2(1, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4dok"]
+size = Vector2(12, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7xbs"]
+size = Vector2(12, 1)
+
+[node name="PlaySpace" type="Sprite2D" unique_id=1075310213 node_paths=PackedStringArray("border")]
+z_index = -1
+texture = SubResource("GradientTexture2D_crql4")
+script = ExtResource("1_juvy7")
+border = NodePath("Border")
+
+[node name="Border" type="Sprite2D" parent="." unique_id=1103148352]
+z_index = -1
+texture = SubResource("GradientTexture2D_tga20")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1733342388]
+collision_layer = 4
+collision_mask = 7
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D" unique_id=1179361226]
+position = Vector2(-5.5, 0)
+shape = SubResource("RectangleShape2D_y06by")
+one_way_collision = true
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="Rigth" type="CollisionShape2D" parent="StaticBody2D" unique_id=899771929]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_7fu2m")
+one_way_collision = true
+one_way_collision_direction = Vector2(1, 0)
+
+[node name="Up" type="CollisionShape2D" parent="StaticBody2D" unique_id=1142694673]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_c4dok")
+one_way_collision = true
+one_way_collision_direction = Vector2(0, -1)
+
+[node name="Down" type="CollisionShape2D" parent="StaticBody2D" unique_id=946127255]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_m7xbs")
+one_way_collision = true
