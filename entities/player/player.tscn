@@ -19,7 +19,7 @@ script = ExtResource("1_abrql")
 SPEED = 60.0
 grazing_area = NodePath("Graze area")
 grazing_collision_shape = NodePath("Graze area/CollisionShape2D")
-hitbox = NodePath("Hitbox")
+hitbox = NodePath("Hurtbox")
 sprite = NodePath("SchemingEmoji")
 
 [node name="SchemingEmoji" type="Sprite2D" parent="." unique_id=860333071]
@@ -41,10 +41,10 @@ collision = NodePath("CollisionShape2D")
 shape = SubResource("CircleShape2D_7fu2m")
 debug_color = Color(0.4875322, 0.877868, 0.63034904, 0.41960785)
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=178867213]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=178867213]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1489840914]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1489840914]
 shape = SubResource("CircleShape2D_tga20")
 debug_color = Color(0.7, 0, 0.21000013, 0.41960785)
 

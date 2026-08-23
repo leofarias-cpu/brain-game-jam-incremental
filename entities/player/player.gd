@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var hitbox: Area2D
 @export var sprite: Sprite2D
 
-signal graze
+signal graze(value: int)
 signal hit
 
 
@@ -31,11 +31,12 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func _on_graze_area_area_entered(_area: Area2D) -> void:
-	graze.emit()
-	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, 'modulate', Color(0.431, 0.865, 0.51, 1.0), 0.2)
-	tween.tween_property(sprite, 'modulate', Color(1.0, 1.0, 1.0, 1.0), 0.1)
+func _on_graze_area_area_entered(area: Area2D) -> void:
+	if area is Grazeable:
+		graze.emit(area.graze)
+		var tween := get_tree().create_tween()
+		tween.tween_property(sprite, 'modulate', Color(0.431, 0.865, 0.51, 1.0), 0.2)
+		tween.tween_property(sprite, 'modulate', Color(1.0, 1.0, 1.0, 1.0), 0.1)
 
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	hit.emit()

@@ -26,13 +26,16 @@ border_color = Color(0.41, 0, 0, 1)
 
 [node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("play_space")]
 script = ExtResource("1_tsptn")
-play_space_height = 128.0
-play_space_wdith = 128.0
+play_space_height = 200.0
+play_space_width = 200.0
 play_space_border_width = 6.0
-play_space = NodePath("PlaySpace2")
+play_space = NodePath("PlaySpace")
+enemies = Array[PackedScene]([ExtResource("4_fcqpf"), ExtResource("4_fcqpf"), ExtResource("4_fcqpf"), ExtResource("4_fcqpf")])
 
-[node name="PlaySpace2" parent="." unique_id=1075310213 instance=ExtResource("6_q6kid")]
+[node name="PlaySpace" parent="." unique_id=1075310213 instance=ExtResource("6_q6kid")]
 position = Vector2(320, 192)
+
+[node name="Player" parent="PlaySpace" unique_id=1423667927 instance=ExtResource("5_2ub4j")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1565455197]
 position = Vector2(321, 180)
@@ -89,17 +92,6 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 
-[node name="entities" type="Node2D" parent="." unique_id=223378482]
-
-[node name="Ball" parent="entities" unique_id=723800753 instance=ExtResource("4_fcqpf")]
-position = Vector2(281, 154)
-
-[node name="Ball2" parent="entities" unique_id=1553547856 instance=ExtResource("4_fcqpf")]
-position = Vector2(368, 234)
-
-[node name="Player" parent="entities" unique_id=1423667927 instance=ExtResource("5_2ub4j")]
-position = Vector2(320, 192)
-
-[connection signal="graze" from="entities/Player" to="CanvasLayer/MarginContainer/Label" method="_on_player_graze"]
-[connection signal="hit" from="entities/Player" to="." method="_on_player_hit"]
-[connection signal="hit" from="entities/Player" to="CanvasLayer/MarginContainer/HealthBar" method="_on_player_hit"]
+[connection signal="graze" from="PlaySpace/Player" to="CanvasLayer/MarginContainer/Label" method="_on_player_graze"]
+[connection signal="hit" from="PlaySpace/Player" to="." method="_on_player_hit"]
+[connection signal="hit" from="PlaySpace/Player" to="CanvasLayer/MarginContainer/HealthBar" method="_on_player_hit"]
