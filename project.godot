@@ -30,6 +30,10 @@ folder_colors={
 "res://ui/": "teal"
 }
 
+[global_group]
+
+enemies="All the enemies baby"
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

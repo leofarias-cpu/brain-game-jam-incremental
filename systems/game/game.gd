@@ -1,17 +1,22 @@
-extends Node2D
+class_name Game extends Node2D
 
-@export var hp = 3:
-	set(value):
-		hp = value
-		if hp <= 0:
-			get_tree().paused = true
+@export_group("Player")
+@export var player: Player
+@export var player_hp_max := 2
+@export var player_speed := 60.0
 
+@export_group("Play Space")
 @export var play_space_height: float
 @export var play_space_width: float
 @export var play_space_border_width: float
 @export var play_space: PlaySpace
 
+@export_group("")
 @export var enemies: Array[PackedScene]
+@export var upgrades: Dictionary[PackedScene, int]
+
+@export_group("Enemy Stats")
+
 
 func _ready() -> void:
 	play_space.height = play_space_height
@@ -21,22 +26,22 @@ func _ready() -> void:
 	
 	round_start()
 
-func _process(_delta: float) -> void:
+func _process(_delta: float):
 	if Input.is_action_just_pressed("ui_accept"):
 		play_space.height += 32
 		play_space.width += 32
 		play_space.update_size()
-	const directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
-	#for i in 20:
-		#await get_tree().create_timer(1).timeout
-		#var direction: Vector2 = directions.pick_random()
-		#print("Side: %s = %s" % [direction, play_space.get_point_from_side(direction, 0.5)])
 
+func round_start() -> void:
+	setup_player()
+	clear_enemies()
+	spawn_enemies()
 
-func _on_player_hit() -> void:
-	hp -= 1
+func round_end() -> void:
+	pass
+	
 
-func round_start():
+func spawn_enemies() -> void:
 	for i in enemies.size():
 		var scene = enemies[i]
 		var new_enemy = scene.instantiate()
@@ -50,9 +55,20 @@ func round_start():
 			new_enemy.position = play_space.get_point_from_side(direction, 0.4)
 			new_enemy.rotation = direction.angle()
 			new_enemy.modulate = colors[i % 4]
+			new_enemy.add_to_group('enemies')
 			print(new_enemy.position)
+		
 		play_space.add_child(new_enemy)
-		
-		
-		
-		
+
+func clear_enemies() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.queue_free()
+
+func setup_player() -> void:
+	player.hp = player_hp_max
+	player.speed = player_speed
+	player.position = play_space.position
+
+
+func _on_player_died() -> void:
+	round_end()

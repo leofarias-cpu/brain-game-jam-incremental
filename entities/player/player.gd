@@ -1,14 +1,16 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-@export var SPEED = 30.0
 @export var grazing_area: Area2D
 @export var grazing_collision_shape: CollisionShape2D
 @export var hitbox: Area2D
 @export var sprite: Sprite2D
 
+var speed = 60
+var hp := 2
+
 signal graze(value: int)
 signal hit
-
+signal died
 
 func _ready() -> void:
 	grazing_area.area_entered.connect(_on_graze_area_area_entered)
@@ -20,12 +22,12 @@ func _physics_process(_delta: float) -> void:
 	var direction_y := Input.get_axis("up", "down")
 	
 	if direction_x:
-		velocity.x = direction_x * SPEED
+		velocity.x = direction_x * speed
 	else:
 		velocity.x = 0
 		
 	if direction_y:
-		velocity.y = direction_y * SPEED
+		velocity.y = direction_y * speed
 	else:
 		velocity.y = 0
 	move_and_slide()
@@ -42,4 +44,8 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 	hit.emit()
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite, 'modulate', Color(0.99, 0.33, 0.198, 1.0), 0.3)
+	if hp <= 0:
+		died.emit()
+		return
+
 	tween.tween_property(sprite, 'modulate', Color(1.0, 1.0, 1.0, 1.0), 0.2)

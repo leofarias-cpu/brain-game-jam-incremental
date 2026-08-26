@@ -1,0 +1,7 @@
+[gd_resource type="Resource" format=3 uid="uid://t0mqqu86gh3u"]
+
+[ext_resource type="Script" uid="uid://bmgpk44qdj1im" path="res://systems/upgrade/upgrades/add_ball/add_ball.gd" id="1_xhv5j"]
+
+[resource]
+script = ExtResource("1_xhv5j")
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"
