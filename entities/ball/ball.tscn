@@ -1,14 +1,7 @@
 [gd_scene format=3 uid="uid://cuovppwi20kvk"]
 
 [ext_resource type="Script" uid="uid://72kujug8owlr" path="res://entities/ball/ball.gd" id="1_61umk"]
-[ext_resource type="Script" uid="uid://4jddw1rvvtvi" path="res://entities/ball/ball_stats.gd" id="2_jyt08"]
 [ext_resource type="Script" uid="uid://b3rik67xq5m22" path="res://entities/ball/ball_hittbox.gd" id="3_w5wpn"]
-
-[sub_resource type="Resource" id="Resource_61umk"]
-script = ExtResource("2_jyt08")
-speed = 40.0
-graze = 1
-metadata/_custom_type_script = "uid://4jddw1rvvtvi"
 
 [sub_resource type="Gradient" id="Gradient_jyt08"]
 interpolation_color_space = 2
@@ -29,18 +22,20 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ivg0e"]
 radius = 7.5
 
-[node name="Ball" type="CharacterBody2D" unique_id=1851846432 node_paths=PackedStringArray("hitbox") groups=["enemies"]]
+[node name="Ball" type="CharacterBody2D" unique_id=1851846432 node_paths=PackedStringArray("hitbox", "physics_collision", "hitbox_collision") groups=["enemies"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_61umk")
-base_stats = SubResource("Resource_61umk")
 hitbox = NodePath("Hittbox")
+physics_collision = NodePath("PhysicsCollision")
+hitbox_collision = NodePath("Hittbox/CollisionShape2D")
 
 [node name="InsaneGradientThing" type="Sprite2D" parent="." unique_id=1300600148]
+visible = false
 scale = Vector2(0.125, 0.125)
 texture = SubResource("GradientTexture2D_ivg0e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=195362136]
+[node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=195362136]
 shape = SubResource("CircleShape2D_tga20")
 
 [node name="Hittbox" type="Area2D" parent="." unique_id=723800753]

@@ -13,10 +13,10 @@ class_name Game extends Node2D
 
 @export_group("")
 @export var enemies: Array[PackedScene]
-@export var upgrades: Dictionary[PackedScene, int]
+#@export var upgrades: Dictionary[PackedScene, int]
 
 @export_group("Enemy Stats")
-
+@export var ball_stats: BallStats
 
 func _ready() -> void:
 	play_space.height = play_space_height
@@ -48,15 +48,16 @@ func spawn_enemies() -> void:
 		
 		if new_enemy is Node2D:
 			const directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
-			const colors = [Color.RED, Color.BLUE, Color.GREEN, Color.WHITE]
 			
 			var direction: Vector2 = directions[i % 4]
 			
 			new_enemy.position = play_space.get_point_from_side(direction, 0.4)
 			new_enemy.rotation = direction.angle()
-			new_enemy.modulate = colors[i % 4]
 			new_enemy.add_to_group('enemies')
 			print(new_enemy.position)
+		
+		if new_enemy is Ball:
+			new_enemy.stats = ball_stats
 		
 		play_space.add_child(new_enemy)
 
