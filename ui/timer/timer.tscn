@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://t75eoijc21wo"]
+
+[ext_resource type="Script" uid="uid://bigam6snn1t4" path="res://ui/timer/timer.gd" id="1_876bi"]
+
+[node name="Timer" type="RichTextLabel" unique_id=1123116106 node_paths=PackedStringArray("timer")]
+custom_minimum_size = Vector2(25, 25)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_876bi")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=1716886076]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

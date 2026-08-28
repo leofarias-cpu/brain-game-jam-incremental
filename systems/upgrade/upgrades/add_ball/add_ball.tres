@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bmgpk44qdj1im" path="res://systems/upgrade/upgrades/add_ball/add_ball.gd" id="1_xhv5j"]
 
+[sub_resource type="Curve" id="Curve_xhv5j"]
+_limits = [1.0, 100000.0, 1.0, 6.0]
+_data = [Vector2(1, 2), 0.0, 0.0, 0, 0, Vector2(2, 100), 0.0, 0.0, 0, 0, Vector2(3, 1000), 0.0, 0.0, 0, 0, Vector2(4, 50000), 0.0, 0.0, 0, 0, Vector2(5.004, 80000), 0.0, 0.0, 0, 0, Vector2(5.9999995, 100000), 0.0, 0.0, 0, 0]
+point_count = 6
+
 [resource]
 script = ExtResource("1_xhv5j")
+cost_curve = SubResource("Curve_xhv5j")
+max_upgrades = 6
+title = "+1 Ball"
+description = "Balls are really motivated to kill you, but they lack a clear sense of direction in life."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

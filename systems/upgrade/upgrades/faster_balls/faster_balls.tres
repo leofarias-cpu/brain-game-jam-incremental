@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://0wr7yvjntel6"]
+
+[ext_resource type="Script" uid="uid://b4r0xb1ap4pld" path="res://systems/upgrade/upgrades/faster_balls/faster_balls.gd" id="1_uiqtv"]
+
+[resource]
+script = ExtResource("1_uiqtv")
+max_upgrades = 4
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

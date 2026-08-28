@@ -1,5 +1,4 @@
 extends Upgrade
 
 func upgrade(game: Game) -> void:
-	game.ball_stats.color = Color.REBECCA_PURPLE
-	game.round_start()
+	game.enemies.push_back(preload("uid://bmgpk44qdj1im"))

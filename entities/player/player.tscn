@@ -16,7 +16,6 @@ radius = 11.0
 [node name="Player" type="CharacterBody2D" unique_id=1423667927 node_paths=PackedStringArray("grazing_area", "grazing_collision_shape", "hitbox", "sprite")]
 collision_mask = 4
 script = ExtResource("1_abrql")
-SPEED = 60.0
 grazing_area = NodePath("Graze area")
 grazing_collision_shape = NodePath("Graze area/CollisionShape2D")
 hitbox = NodePath("Hurtbox")

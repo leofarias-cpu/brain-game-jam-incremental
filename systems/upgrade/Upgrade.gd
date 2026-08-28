@@ -7,10 +7,11 @@ class_name Upgrade extends Resource
 @export var max_upgrades: int = 1
 var current_upgrades: int = 0
 
+@export var title: String = "Heheheheheeh"
 @export var description: String = "Buy me B )"
 @export var icon: Image
 
 ## Applies the effect of the upgrade by modifying Game.
 ## Could be adding an enemy, changing stats, anything.
 func upgrade(game: Game) -> void:
-    pass
+	pass
