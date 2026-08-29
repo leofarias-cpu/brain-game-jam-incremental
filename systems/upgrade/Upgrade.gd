@@ -9,7 +9,7 @@ var current_upgrades: int = 0
 
 @export var title: String = "Heheheheheeh"
 @export var description: String = "Buy me B )"
-@export var icon: Image
+@export var icon: Texture2D = preload("uid://4q335xxs2p")
 
 ## Applies the effect of the upgrade by modifying Game.
 ## Could be adding an enemy, changing stats, anything.

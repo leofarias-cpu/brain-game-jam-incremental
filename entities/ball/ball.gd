@@ -18,7 +18,7 @@ func _ready() -> void:
 	facing_direction = Vector2.from_angle(deg_to_rad(randf_range(0, 360))).normalized()
 	
 	speed_current = stats.speed
-	hitbox.graze = stats.graze
+	hitbox.graze = stats.graze * stats.graze_mult
 	
 	physics_collision.shape.radius = stats.radius * 0.9 # If its the same size the ball just bounce off the player
 	hitbox_collision.shape.radius = stats.radius

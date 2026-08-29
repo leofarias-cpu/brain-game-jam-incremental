@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cejcjsd3sgueb" path="res://entities/play space/PlaySpace.tscn" id="6_q6kid"]
 [ext_resource type="Script" uid="uid://d2jv2neubkwrw" path="res://systems/upgrade/UpgradesManager.gd" id="7_sc4om"]
 [ext_resource type="PackedScene" uid="uid://t75eoijc21wo" path="res://ui/timer/timer.tscn" id="7_xtdty"]
+[ext_resource type="PackedScene" uid="uid://bol2w53j30opf" path="res://ui/shop/Shop.tscn" id="10_fws3a"]
 
 [sub_resource type="Resource" id="Resource_sc4om"]
 script = ExtResource("3_fcqpf")
@@ -36,7 +37,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.41, 0, 0, 1)
 
-[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "timer_ui", "v_box_container", "money_ui", "background")]
+[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "timer_ui", "v_box_container", "money_ui", "background", "shop")]
 script = ExtResource("1_tsptn")
 player = NodePath("Player")
 play_space = NodePath("PlaySpace")
@@ -51,6 +52,7 @@ timer_ui = NodePath("CanvasLayer/MarginContainer/VBoxContainer/Timer")
 v_box_container = NodePath("CanvasLayer/MarginContainer/VBoxContainer")
 money_ui = NodePath("CanvasLayer/MarginContainer/Money")
 background = NodePath("Camera2D/Background")
+shop = NodePath("CanvasLayer/Shop")
 
 [node name="Going Crazy Timer" type="Timer" parent="." unique_id=1303384587]
 
@@ -142,6 +144,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
+
+[node name="Shop" parent="CanvasLayer" unique_id=429705958 instance=ExtResource("10_fws3a")]
+custom_minimum_size = Vector2(200, -1)
+anchors_preset = 11
+anchor_left = 1.0
+offset_right = 0.0
+grow_horizontal = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(200, 0)
 
 [node name="Upgrades" type="Node2D" parent="." unique_id=402822264]
 script = ExtResource("7_sc4om")

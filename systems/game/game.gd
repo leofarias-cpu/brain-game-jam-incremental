@@ -26,6 +26,7 @@ class_name Game extends Node2D
 @export var v_box_container: VBoxContainer
 @export var money_ui: RichTextLabel
 @export var background: Sprite2D
+@export var shop: Panel
 
 var money: int = 0
 var score := 0
@@ -57,6 +58,9 @@ func round_end() -> void:
 	tween.tween_property(v_box_container, 'offset_transform_position', Vector2(-round_end_position.position.x - 40, 0), 0.5)
 	tween.tween_property(money_ui, 'offset_transform_position', Vector2(-round_end_position.position.x - 40, 0), 0.5)
 	tween.tween_property(money_ui, 'scale', Vector2(1.5, 1.5), 1)
+	
+	tween.tween_property(shop, 'offset_transform_position', Vector2(0, 0), 0.5)
+	
 	# -40 because of the margin oh god
 	
 	tween.tween_property(money_ui, 'text', "$" + str(money), 2)
@@ -92,6 +96,7 @@ func setup_player() -> void:
 	player.hp = player_hp_max
 	player.speed = player_speed
 	player.position = play_space.position
+	
 
 func setup_timer() -> void:
 	await get_tree().create_timer(1).timeout # Grace period for spawned enemies
