@@ -8,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://budtopphq6vwo" path="res://entities/player/player.tscn" id="5_2ub4j"]
 [ext_resource type="Script" uid="uid://c5jcr48ke1ckg" path="res://systems/game/background.gd" id="6_2ub4j"]
 [ext_resource type="PackedScene" uid="uid://cejcjsd3sgueb" path="res://entities/play space/PlaySpace.tscn" id="6_q6kid"]
+[ext_resource type="Script" uid="uid://cywl8bvl3tnr0" path="res://ui/ui.gd" id="7_7o6gp"]
 [ext_resource type="Script" uid="uid://d2jv2neubkwrw" path="res://systems/upgrade/UpgradesManager.gd" id="7_sc4om"]
+[ext_resource type="Theme" uid="uid://dj1j8finhedt" path="res://ui/theme.tres" id="7_tpamu"]
 [ext_resource type="PackedScene" uid="uid://t75eoijc21wo" path="res://ui/timer/timer.tscn" id="7_xtdty"]
+[ext_resource type="Theme" uid="uid://c8n2h0a5fv313" path="res://ui/numbers.tres" id="8_stwo3"]
 [ext_resource type="PackedScene" uid="uid://bol2w53j30opf" path="res://ui/shop/Shop.tscn" id="10_fws3a"]
 
 [sub_resource type="Resource" id="Resource_sc4om"]
@@ -37,7 +40,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.41, 0, 0, 1)
 
-[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "timer_ui", "v_box_container", "money_ui", "background", "shop")]
+[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "ui_layer", "background")]
 script = ExtResource("1_tsptn")
 player = NodePath("Player")
 play_space = NodePath("PlaySpace")
@@ -48,11 +51,8 @@ enemies = Array[PackedScene]([ExtResource("4_fcqpf"), ExtResource("4_fcqpf")])
 going_crazy_timer = NodePath("Going Crazy Timer")
 round_end_position = NodePath("RoundEndPosition")
 ball_stats = SubResource("Resource_sc4om")
-timer_ui = NodePath("CanvasLayer/MarginContainer/VBoxContainer/Timer")
-v_box_container = NodePath("CanvasLayer/MarginContainer/VBoxContainer")
-money_ui = NodePath("CanvasLayer/MarginContainer/Money")
+ui_layer = NodePath("UI Layer")
 background = NodePath("Camera2D/Background")
-shop = NodePath("CanvasLayer/Shop")
 
 [node name="Going Crazy Timer" type="Timer" parent="." unique_id=1303384587]
 
@@ -77,91 +77,112 @@ scale = Vector2(10.015625, 5.633789)
 texture = SubResource("GradientTexture2D_tga20")
 script = ExtResource("6_2ub4j")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1395375313]
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("score_and_time_container", "money", "round_end_position", "shop", "timer")]
 process_mode = 3
+script = ExtResource("7_7o6gp")
+score_and_time_container = NodePath("MarginContainer/VBoxContainer")
+money = NodePath("MarginContainer/Money")
+round_end_position = NodePath("../RoundEndPosition")
+shop = NodePath("Shop")
+timer = NodePath("MarginContainer/VBoxContainer/Timer")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=2037058904]
+[node name="MarginContainer" type="MarginContainer" parent="UI Layer" unique_id=2037058904]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
+theme = ExtResource("7_tpamu")
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Money" type="RichTextLabel" parent="CanvasLayer/MarginContainer" unique_id=887263959]
+[node name="Money" type="RichTextLabel" parent="UI Layer/MarginContainer" unique_id=887263959]
 modulate = Color(0.9098039, 0.74509805, 0, 1)
 custom_minimum_size = Vector2(100, 50)
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 offset_transform_enabled = true
+offset_transform_pivot = Vector2(50, -25)
+theme = ExtResource("8_stwo3")
 text = "$0"
+scroll_active = false
 horizontal_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=2081813754]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI Layer/MarginContainer" unique_id=2081813754]
 layout_mode = 2
 size_flags_horizontal = 4
 offset_transform_enabled = true
 
-[node name="Timer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=649885082 instance=ExtResource("7_xtdty")]
+[node name="Timer" parent="UI Layer/MarginContainer/VBoxContainer" unique_id=649885082 instance=ExtResource("7_xtdty")]
+custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 offset_transform_position = Vector2(0, 20)
+theme = ExtResource("8_stwo3")
+theme_override_font_sizes/normal_font_size = 24
 text = "30"
+scroll_active = false
 horizontal_alignment = 1
 
-[node name="Score" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1299121238]
+[node name="Score" type="RichTextLabel" parent="UI Layer/MarginContainer/VBoxContainer" unique_id=1542508186]
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = ExtResource("8_stwo3")
 text = "0"
+scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("2_q6kid")
 
-[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1082521777]
+[node name="HealthBar" type="HBoxContainer" parent="UI Layer/MarginContainer" unique_id=1082521777]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("3_sc4om")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer/HealthBar" unique_id=297643194]
+[node name="Panel" type="Panel" parent="UI Layer/MarginContainer/HealthBar" unique_id=297643194]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/MarginContainer/HealthBar" unique_id=1627050612]
+[node name="Panel2" type="Panel" parent="UI Layer/MarginContainer/HealthBar" unique_id=1627050612]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/MarginContainer/HealthBar" unique_id=402445401]
+[node name="Panel3" type="Panel" parent="UI Layer/MarginContainer/HealthBar" unique_id=402445401]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 
-[node name="Shop" parent="CanvasLayer" unique_id=429705958 instance=ExtResource("10_fws3a")]
-custom_minimum_size = Vector2(200, -1)
+[node name="Shop" parent="UI Layer" unique_id=429705958 instance=ExtResource("10_fws3a")]
+custom_minimum_size = Vector2(350, -1)
+custom_maximum_size = Vector2(350, -1)
 anchors_preset = 11
 anchor_left = 1.0
-offset_right = 0.0
+anchor_right = 1.0
 grow_horizontal = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
 offset_transform_enabled = true
-offset_transform_position = Vector2(200, 0)
+offset_transform_position = Vector2(350, 0)
 
 [node name="Upgrades" type="Node2D" parent="." unique_id=402822264]
 script = ExtResource("7_sc4om")
 
+[connection signal="money_set" from="." to="UI Layer" method="_on_game_money_set"]
+[connection signal="score_set" from="." to="UI Layer/MarginContainer/VBoxContainer/Score" method="_on_game_score_set"]
 [connection signal="timeout" from="Going Crazy Timer" to="Camera2D/Background" method="_on_game_go_crazy"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="graze" from="Player" to="." method="_on_player_graze"]
-[connection signal="graze" from="Player" to="CanvasLayer/MarginContainer/VBoxContainer/Score" method="_on_player_graze"]
+[connection signal="graze" from="Player" to="UI Layer/MarginContainer/VBoxContainer/Score" method="_on_player_graze"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
-[connection signal="hit" from="Player" to="CanvasLayer/MarginContainer/HealthBar" method="_on_player_hit"]
+[connection signal="hit" from="Player" to="UI Layer/MarginContainer/HealthBar" method="_on_player_hit"]

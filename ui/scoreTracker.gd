@@ -1,7 +1,6 @@
-extends Label
+extends RichTextLabel
 
-var score = 0
 
-func _on_player_graze(value: int) -> void:
-	score += value
-	text = str(score)
+
+func _on_game_score_set(value: int) -> void:
+	self.text = str(value)

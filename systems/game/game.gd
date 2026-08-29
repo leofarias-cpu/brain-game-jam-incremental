@@ -22,14 +22,22 @@ class_name Game extends Node2D
 @export var ball_stats: BallStats
 
 @export_group("UI")
-@export var timer_ui: TimerLabel
-@export var v_box_container: VBoxContainer
-@export var money_ui: RichTextLabel
+@export var ui_layer: UI
 @export var background: Sprite2D
-@export var shop: Panel
 
-var money: int = 0
-var score := 0
+
+var money: int = 0:
+	set(v):
+		money = v
+		money_set.emit(v)
+
+var score := 0:
+		set(v):
+			score = v
+			score_set.emit(v)
+
+signal money_set(value: int)
+signal score_set(value: int)
 
 func _ready() -> void:
 	play_space.height = play_space_height
@@ -48,22 +56,14 @@ func round_start() -> void:
 	score = 0
 
 func round_end() -> void:
-	timer_ui.stop()
+	ui_layer.stop_timer()
 	money += score # TODO: signal on bofa
 	
 	await get_tree().create_timer(0.5).timeout
-	# TODO: Move all this logic onto a script on the canvas layer.
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
 	tween.tween_property(play_space, 'position', round_end_position.position, 0.5)
-	tween.tween_property(v_box_container, 'offset_transform_position', Vector2(-round_end_position.position.x - 40, 0), 0.5)
-	tween.tween_property(money_ui, 'offset_transform_position', Vector2(-round_end_position.position.x - 40, 0), 0.5)
-	tween.tween_property(money_ui, 'scale', Vector2(1.5, 1.5), 1)
 	
-	tween.tween_property(shop, 'offset_transform_position', Vector2(0, 0), 0.5)
-	
-	# -40 because of the margin oh god
-	
-	tween.tween_property(money_ui, 'text', "$" + str(money), 2)
+	ui_layer.show_shop()
 	
 func spawn_enemies() -> void:
 	for i in enemies.size():
@@ -101,7 +101,7 @@ func setup_player() -> void:
 func setup_timer() -> void:
 	await get_tree().create_timer(1).timeout # Grace period for spawned enemies
 	going_crazy_timer.start(safe_time)
-	timer_ui.start(safe_time)
+	ui_layer.start_timer(safe_time)
 
 func _on_player_died() -> void:
 	round_end()

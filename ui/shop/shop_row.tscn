@@ -16,9 +16,10 @@ size_flags_horizontal = 3
 theme = ExtResource("1_iyhv2")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1900796182]
-layout_mode = 0
-offset_right = 141.0
-offset_bottom = 52.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5
@@ -30,49 +31,48 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=741816819]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=510559850]
-custom_minimum_size = Vector2(20, 20)
-custom_maximum_size = Vector2(20, 20)
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=510559850]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource("2_bh2l1")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=195419741]
-custom_minimum_size = Vector2(25, 20)
-layout_mode = 2
-mouse_filter = 1
-theme_override_colors/default_color = Color(0.9098039, 0.74509805, 0, 1)
-theme_override_font_sizes/normal_font_size = 8
-text = "$50"
-scroll_active = false
-horizontal_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1267731630]
-custom_minimum_size = Vector2(100, 16)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="Title" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1163604816]
-custom_minimum_size = Vector2(0, 20)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=744761249]
 layout_mode = 2
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1163604816]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 1
-bbcode_enabled = true
-text = "[u color=#2e61d9]HAHA [/u]"
+theme_override_font_sizes/normal_font_size = 22
+text = "HAHA"
 scroll_active = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=195419741]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("1_iyhv2")
+theme_override_colors/default_color = Color(0.9098039, 0.74509805, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
+text = "$1234567890"
+scroll_active = false
+horizontal_alignment = 2
 
 [node name="Description" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=763220801]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
-theme_override_font_sizes/normal_font_size = 8
-text = "Ball ass pussy
-asdasdasdasdasdasdasdasdasd asdasd aadasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+theme_override_font_sizes/normal_font_size = 20
+text = "Ball ass pussy asdasdasdasdasdasdasdasdasd asdasd 
 "
 scroll_active = false
