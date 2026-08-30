@@ -42,6 +42,7 @@ corner_detail = 1
 
 [resource]
 Button/colors/font_color = Color(0.88, 0.052800003, 0.052800003, 1)
+Button/colors/font_hover_color = Color(1, 0, 0, 1)
 Button/fonts/font = ExtResource("1_g35w5")
 Button/styles/hover = SubResource("StyleBoxFlat_s6nha")
 Button/styles/normal = SubResource("StyleBoxFlat_s6nha")
