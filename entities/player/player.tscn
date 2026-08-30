@@ -13,7 +13,7 @@ radius = 23.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
 radius = 11.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1423667927 node_paths=PackedStringArray("grazing_area", "grazing_collision_shape", "hitbox", "sprite")]
+[node name="Player" type="CharacterBody2D" unique_id=819479828 node_paths=PackedStringArray("grazing_area", "grazing_collision_shape", "hitbox", "sprite")]
 collision_mask = 4
 script = ExtResource("1_abrql")
 grazing_area = NodePath("Graze area")

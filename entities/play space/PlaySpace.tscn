@@ -13,7 +13,7 @@ height = 50
 
 [sub_resource type="Gradient" id="Gradient_crql4"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.18039216, 0.38039216, 0.8509804, 1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tga20"]
 gradient = SubResource("Gradient_crql4")
@@ -39,6 +39,7 @@ script = ExtResource("1_juvy7")
 border = NodePath("Border")
 
 [node name="Border" type="Sprite2D" parent="." unique_id=1103148352]
+modulate = Color(0.18039216, 0.38039216, 0.8509804, 1)
 z_index = -1
 texture = SubResource("GradientTexture2D_tga20")
 

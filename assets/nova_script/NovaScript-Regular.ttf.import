@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dq4j8irxxr1gv"
-path="res://.godot/imported/NovaScript-Regular.ttf-9319fe60993d64e56b84d30ef4f935fe.fontdata"
+path="res://.godot/imported/NovaScript-Regular.ttf-a0e556c27d23307b63a9a01ce2a81e89.fontdata"
 
 [deps]
 
-source_file="res://assets/nova script/NovaScript-Regular.ttf"
-dest_files=["res://.godot/imported/NovaScript-Regular.ttf-9319fe60993d64e56b84d30ef4f935fe.fontdata"]
+source_file="res://assets/nova_script/NovaScript-Regular.ttf"
+dest_files=["res://.godot/imported/NovaScript-Regular.ttf-a0e556c27d23307b63a9a01ce2a81e89.fontdata"]
 
 [params]
 

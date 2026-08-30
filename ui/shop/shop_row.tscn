@@ -3,8 +3,9 @@
 [ext_resource type="Theme" uid="uid://dj1j8finhedt" path="res://ui/theme.tres" id="1_iyhv2"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_bh2l1"]
 [ext_resource type="Script" uid="uid://bwgubj12p1yqf" path="res://ui/shop/shop_row.gd" id="2_h1wgh"]
-[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/add_ball/add_ball.tres" id="3_h1wgh"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/more_ball_money/more_ball_money.tres" id="3_h1wgh"]
 [ext_resource type="Theme" uid="uid://c8n2h0a5fv313" path="res://ui/numbers.tres" id="5_cf0wy"]
+[ext_resource type="Script" uid="uid://c2dbhuw14o6fs" path="res://ui/shop/level.gd" id="5_vpogu"]
 
 [node name="Shop row" type="Button" unique_id=30294692 node_paths=PackedStringArray("title", "cost", "description", "icon2")]
 custom_minimum_size = Vector2(-1, 50)
@@ -57,18 +58,37 @@ theme_override_constants/separation = 0
 layout_mode = 2
 
 [node name="Title" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1163604816]
-custom_minimum_size = Vector2(40, 20)
+custom_maximum_size = Vector2(-1, 400)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
 text = "+1 Ball"
+fit_content = true
 scroll_active = false
+autowrap_mode = 0
+
+[node name="Level" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1225967905]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.5330367, 0.5330367, 0.5330366, 1)
+theme_override_font_sizes/normal_font_size = 18
+text = "Level .1"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("5_vpogu")
 
 [node name="Cost" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=195419741]
 clip_contents = false
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
+size_flags_vertical = 4
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, -2)
 mouse_filter = 1
@@ -76,18 +96,24 @@ theme = ExtResource("5_cf0wy")
 theme_override_colors/default_color = Color(0.9098039, 0.74509805, 0, 1)
 theme_override_font_sizes/normal_font_size = 20
 text = "$1234567890"
+fit_content = true
 scroll_active = false
-horizontal_alignment = 2
+autowrap_mode = 0
 
 [node name="Description" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=763220801]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 0
+size_flags_vertical = 6
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
 text = "Balls are really motivated to kill you, but they lack a clear sense of direction in life."
+fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
+[connection signal="bought" from="." to="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Level" method="_on_shop_row_bought"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -46,7 +46,7 @@ func _on_hitbox_area_entered(_area: Area2D) -> void:
 	tween.tween_property(sprite, 'modulate', Color(0.99, 0.33, 0.198, 1.0), 0.3)
 	
 	hp -= 1
-	if hp < 0:
+	if hp <= 0:
 		died.emit()
 		return
 

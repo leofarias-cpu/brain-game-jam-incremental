@@ -3,6 +3,22 @@
 [ext_resource type="FontFile" uid="uid://bcvxpijxpi37a" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Regular.ttf" id="1_rqugq"]
 [ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="2_jf26r"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf26r"]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.019833354, 0, 0.17, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 2
+shadow_color = Color(0.0015484993, 0.008348984, 0.05488397, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6nha"]
 bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
 border_width_left = 2
@@ -43,9 +59,12 @@ corner_detail = 1
 [resource]
 Button/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 1)
 Button/fonts/font = ExtResource("1_rqugq")
+Button/styles/disabled = SubResource("StyleBoxFlat_jf26r")
 Button/styles/hover = SubResource("StyleBoxFlat_s6nha")
 Button/styles/normal = SubResource("StyleBoxFlat_s6nha")
 Button/styles/pressed = SubResource("StyleBoxFlat_rqugq")
 Panel/styles/panel = SubResource("StyleBoxFlat_8grp2")
+RichTextLabel/colors/font_outline_color = Color(0.01813333, 0.015999999, 0.08, 1)
+RichTextLabel/constants/outline_size = 6
 RichTextLabel/fonts/italics_font = ExtResource("2_jf26r")
 RichTextLabel/fonts/normal_font = ExtResource("1_rqugq")

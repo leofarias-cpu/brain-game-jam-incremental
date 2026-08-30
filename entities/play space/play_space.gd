@@ -65,3 +65,13 @@ func get_point_from_side(side: Vector2, max_distance: float, min_distance: float
 		var err:
 			push_error("Mano tu tá louco KRL eu falei que tinha que ser um dos vetores e tu me passa uma merda dessa: %s" % err)
 			return Vector2.ZERO
+
+
+
+func _on_going_crazy_timer_timeout() -> void:
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(border, "modulate", Color.FIREBRICK, 0.5)
+
+func reset_border_color():
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(border, "modulate", Color.from_rgba8(46, 97, 217, 255) , 0.5)

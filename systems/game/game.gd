@@ -21,10 +21,12 @@ class_name Game extends Node2D
 
 @export_group("Enemy Stats")
 @export var ball_stats: BallStats
+@export var enable_evil_ball = false
 
 @export_group("UI")
 @export var ui_layer: UI
 @export var background: Sprite2D
+@export var shop: Shop
 
 
 var money: int = 0:
@@ -42,20 +44,18 @@ signal money_set(value: int)
 signal score_set(value: int)
 
 func _ready() -> void:
-	play_space.height = play_space_height
-	play_space.width = play_space_width
-	play_space.border_width = play_space_border_width
-	play_space.update_size()
-	
+	set_play_space_size(play_space_height, play_space_width, play_space_border_width)
 	round_start()
 
 func round_start() -> void:
-	background.reset_gradient()
-	
 	await get_tree().create_timer(0.5).timeout
+	
+	background.reset_gradient()
+	play_space.reset_border_color()
+	
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	tween.tween_property(play_space, 'position', round_start_position.position, 0.5)
 	ui_layer.close_shop()
+	tween.tween_property(play_space, 'position', round_start_position.position, 0.5)
 	
 	setup_player()
 	clear_enemies()
@@ -91,6 +91,15 @@ func spawn_enemies() -> void:
 		
 		if new_enemy is Ball:
 			new_enemy.stats = ball_stats
+			if i == 1 and enable_evil_ball:
+				var evil_ball_stats = BallStats.new()
+				evil_ball_stats.speed = ball_stats.speed * 1.5
+				evil_ball_stats.graze = ball_stats.graze + 10
+				evil_ball_stats.graze_mult = ball_stats.graze_mult + 2
+				evil_ball_stats.radius = ball_stats.radius * 1.5
+				evil_ball_stats.color = Color(0.387, 0.052, 0.488, 1.0)
+				
+				new_enemy.stats = evil_ball_stats
 		
 		if new_enemy.has_method("go_crazy"):
 			going_crazy_timer.timeout.connect(new_enemy.go_crazy)
@@ -112,6 +121,19 @@ func setup_timer() -> void:
 	going_crazy_timer.start(safe_time)
 	ui_layer.start_timer(safe_time)
 
+func set_play_space_size(height: int, width: int, border_width: int):
+	play_space.height = height
+	play_space.width = width
+	play_space.border_width = border_width
+	play_space.update_size()
+	
+func increase_play_space_size(height: int, width: int, border_width: int = 0):
+	play_space.height += height
+	play_space.width += width
+	play_space.border_width += border_width
+	play_space.update_size()
+	
+	
 func _on_player_died() -> void:
 	round_end()
 	going_crazy_timer.stop()
@@ -120,3 +142,6 @@ func _on_player_died() -> void:
 
 func _on_player_graze(value: int) -> void:
 	score += value
+
+func add_upgrade(upgrade: Upgrade):
+	shop.add_upgrade(upgrade)

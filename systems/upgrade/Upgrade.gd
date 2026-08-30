@@ -9,6 +9,7 @@ var current_upgrades: int = 0
 
 @export var title: String = "Heheheheheeh"
 @export var description: String = "Buy me B )"
+@export var flavor_text: String = ""
 @export var icon: Texture2D = preload("uid://4q335xxs2p")
 
 var game: Game

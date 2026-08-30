@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://c5jbdn3d7l11q"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_55rex"]
+[ext_resource type="Script" uid="uid://ela37ktpbp3y" path="res://systems/upgrade/upgrades/more_hp/more_hp.gd" id="2_55rex"]
+
+[sub_resource type="Curve" id="Curve_1du47"]
+_limits = [0.0, 1000.0, 1.0, 2.0]
+_data = [Vector2(1, 700), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[resource]
+script = ExtResource("2_55rex")
+cost_curve = SubResource("Curve_1du47")
+max_upgrades = 3
+title = "+1 HP"
+description = "Play stupider!"
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

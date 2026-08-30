@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://ckd4xp572i1ba"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_pit7g"]
+[ext_resource type="Script" uid="uid://f4m660r0bbb0" path="res://systems/upgrade/upgrades/bigger_play_area/bigger_play_area.gd" id="2_pit7g"]
+
+[sub_resource type="Curve" id="Curve_s2ak1"]
+_limits = [1.0, 10000.0, 1.0, 5.0]
+_data = [Vector2(1, 175), 0.0, 0.0, 0, 0, Vector2(2, 1000), 0.0, 0.0, 0, 0, Vector2(3, 10000), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("2_pit7g")
+cost_curve = SubResource("Curve_s2ak1")
+max_upgrades = 7
+title = "Bigger Box"
+description = "More space to move around"
+flavor_text = "Bad news: You're in hell. Good news: Land is really cheap."
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

@@ -5,11 +5,13 @@
 
 [sub_resource type="Curve" id="Curve_hoijo"]
 _limits = [1.0, 10000.0, 1.0, 5.0]
-_data = [Vector2(1, 50), 0.0, 0.0, 0, 0, Vector2(1.5538462, 2247.9658), 0.0, 0.0, 0, 0, Vector2(2.4358974, 5056.6743), 0.0, 0.0, 0, 0, Vector2(3.3179488, 7191.2925), 0.0, 0.0, 0, 0, Vector2(4.528205, 9213.5625), 0.0, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(1, 150), 0.0, 0.0, 0, 0, Vector2(2, 500), 0.0, 0.0, 0, 0, Vector2(3, 7191.292), 0.0, 0.0, 0, 0, Vector2(4.528205, 9213.5625), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [resource]
 script = ExtResource("1_uiqtv")
 cost_curve = SubResource("Curve_hoijo")
 max_upgrades = 4
+title = "Faster Balls"
+description = "1.5x graze, but +10 ball speed."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

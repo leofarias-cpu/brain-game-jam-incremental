@@ -18,6 +18,17 @@ func add_upgrade(upgrade: Upgrade):
 
 	var row: Shop_Row = shop_row.instantiate()
 	row.upgrade = upgrade
-
+	row.bought.connect(on_upgrade_bought)
+	
 	upgrades_container.add_child(row)
 	upgrades.push_back(upgrade)
+
+func disable_expensive_upgrades():
+	for upgrade: Shop_Row in upgrades_container.get_children():
+		if upgrade.upgrade.get_next_upgrade_cost() > game.money:
+			upgrade.disable()
+		else:
+			upgrade.enable()
+
+func on_upgrade_bought(_upgrade: Upgrade):
+	disable_expensive_upgrades()

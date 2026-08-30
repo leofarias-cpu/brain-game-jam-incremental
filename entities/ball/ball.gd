@@ -29,10 +29,10 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		var reflect = collision.get_remainder().bounce(collision.get_normal())
 		# + random to avoid a ball bouncing perfectly in a straight line
-		facing_direction = (facing_direction.bounce(collision.get_normal())  + Vector2.ONE * randf_range(-0.5, 0.5)).normalized()
+		facing_direction = (facing_direction.bounce(collision.get_normal())  + Vector2.ONE * randf_range(-0.4, 0.4)).normalized()
 		move_and_collide(reflect)
 
 func go_crazy():
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(self, "speed_current", stats.speed * 1.5, 0.5)
+	tween.tween_property(self, "speed_current", speed_current * 1.5, 0.5)
 	tween.tween_property(self, "modulate", Color.FIREBRICK, 0.5)

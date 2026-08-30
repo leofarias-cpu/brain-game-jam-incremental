@@ -16,11 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://bol2w53j30opf" path="res://ui/shop/Shop.tscn" id="10_fws3a"]
 [ext_resource type="FontFile" uid="uid://bcvxpijxpi37a" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Regular.ttf" id="10_s2ak1"]
 [ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="11_danal"]
+[ext_resource type="PackedScene" uid="uid://cdbi5j1lx0ri" path="res://ui/timer/progress_bar.tscn" id="14_8ssvi"]
+[ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="17_acwcx"]
+[ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/add_ball/add_ball.tres" id="18_n2pfc"]
+[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/faster_balls/faster_balls.tres" id="19_3gm7n"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/more_ball_money/more_ball_money.tres" id="19_n2pfc"]
+[ext_resource type="Resource" uid="uid://ckd4xp572i1ba" path="res://systems/upgrade/upgrades/bigger_play_area/bigger_play_area.tres" id="20_8ssvi"]
 
 [sub_resource type="Resource" id="Resource_sc4om"]
 script = ExtResource("3_fcqpf")
 speed = 25.0
-graze = 12
+graze = 1
 radius = 10.0
 color = Color(0.9098039, 0.74509805, 0, 1)
 metadata/_custom_type_script = "uid://4jddw1rvvtvi"
@@ -28,7 +34,7 @@ metadata/_custom_type_script = "uid://4jddw1rvvtvi"
 [sub_resource type="Gradient" id="Gradient_80nbo"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.50301206, 1)
-colors = PackedColorArray(0.15264732, 0.0059507596, 0.1933791, 1, 0, 0, 0, 1, 0.001887664, 0.08824862, 0.25474063, 1)
+colors = PackedColorArray(0.23, 0.018399997, 0.053666726, 1, 0, 0, 0, 1, 0.0062052268, 0.102160506, 0.21313933, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tga20"]
 gradient = SubResource("Gradient_80nbo")
@@ -102,7 +108,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.41, 0, 0, 1)
 
-[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "round_start_position", "ui_layer", "background")]
+[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "round_start_position", "ui_layer", "background", "shop")]
 script = ExtResource("1_tsptn")
 player = NodePath("Player")
 play_space = NodePath("PlaySpace")
@@ -116,6 +122,7 @@ round_start_position = NodePath("RoundStartPosition")
 ball_stats = SubResource("Resource_sc4om")
 ui_layer = NodePath("UI Layer")
 background = NodePath("Camera2D/Background")
+shop = NodePath("UI Layer/Shop")
 
 [node name="Going Crazy Timer" type="Timer" parent="." unique_id=1303384587]
 
@@ -150,7 +157,7 @@ score_and_time_container = NodePath("MarginContainer/VBoxContainer")
 money = NodePath("MarginContainer/Money")
 round_end_position = NodePath("../RoundEndPosition")
 shop = NodePath("Shop")
-timer = NodePath("MarginContainer/VBoxContainer/Timer")
+timer = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Timer")
 round_start_button = NodePath("Round Start")
 
 [node name="Round Start" type="Button" parent="UI Layer" unique_id=1109474704 node_paths=PackedStringArray("game")]
@@ -199,29 +206,54 @@ horizontal_alignment = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI Layer/MarginContainer" unique_id=2081813754]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 offset_transform_enabled = true
+theme_override_constants/separation = 0
 
-[node name="Timer" parent="UI Layer/MarginContainer/VBoxContainer" unique_id=649885082 instance=ExtResource("7_xtdty")]
-custom_minimum_size = Vector2(50, 25)
+[node name="HBoxContainer" type="HBoxContainer" parent="UI Layer/MarginContainer/VBoxContainer" unique_id=2052230800]
+custom_maximum_size = Vector2(-1, 40)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-offset_transform_position = Vector2(0, 20)
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Timer" parent="UI Layer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=649885082 node_paths=PackedStringArray("progress_bar") instance=ExtResource("7_xtdty")]
+visible = false
+custom_minimum_size = Vector2(50, 25)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+offset_transform_enabled = true
 theme = ExtResource("8_stwo3")
 theme_override_font_sizes/normal_font_size = 24
 text = "30"
+fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+autowrap_mode = 0
+horizontal_alignment = 2
+progress_bar = NodePath("../ProgressBar")
 
-[node name="Score" type="RichTextLabel" parent="UI Layer/MarginContainer/VBoxContainer" unique_id=1542508186]
-custom_minimum_size = Vector2(200, 20)
+[node name="ProgressBar" parent="UI Layer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=671674136 instance=ExtResource("14_8ssvi")]
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-10, -10)
+offset_transform_scale = Vector2(0.3, 0.3)
+
+[node name="Score" type="RichTextLabel" parent="UI Layer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1542508186]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
 theme = ExtResource("8_stwo3")
+theme_override_font_sizes/normal_font_size = 24
 text = "0"
+fit_content = true
 scroll_active = false
-horizontal_alignment = 1
+autowrap_mode = 0
 script = ExtResource("2_q6kid")
 
 [node name="HealthBar" type="HBoxContainer" parent="UI Layer/MarginContainer" unique_id=1082521777]
@@ -247,20 +279,23 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 
 [node name="Shop" parent="UI Layer" unique_id=429705958 node_paths=PackedStringArray("game") instance=ExtResource("10_fws3a")]
+visible = false
 custom_minimum_size = Vector2(350, -1)
 custom_maximum_size = Vector2(350, -1)
 size_flags_horizontal = 1
 size_flags_vertical = 3
 offset_transform_enabled = true
 offset_transform_position = Vector2(350, 0)
+initial_upgrades = Array[ExtResource("17_acwcx")]([ExtResource("18_n2pfc"), ExtResource("19_n2pfc"), ExtResource("19_3gm7n"), ExtResource("20_8ssvi")])
 game = NodePath("../..")
 
 [connection signal="money_set" from="." to="UI Layer" method="_on_game_money_set"]
-[connection signal="score_set" from="." to="UI Layer/MarginContainer/VBoxContainer/Score" method="_on_game_score_set"]
+[connection signal="score_set" from="." to="UI Layer/MarginContainer/VBoxContainer/HBoxContainer/Score" method="_on_game_score_set"]
+[connection signal="timeout" from="Going Crazy Timer" to="PlaySpace" method="_on_going_crazy_timer_timeout"]
 [connection signal="timeout" from="Going Crazy Timer" to="Camera2D/Background" method="_on_game_go_crazy"]
+[connection signal="timeout" from="Going Crazy Timer" to="UI Layer/MarginContainer/VBoxContainer/HBoxContainer/ProgressBar" method="_on_going_crazy_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="graze" from="Player" to="." method="_on_player_graze"]
-[connection signal="graze" from="Player" to="UI Layer/MarginContainer/VBoxContainer/Score" method="_on_player_graze"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="hit" from="Player" to="UI Layer/MarginContainer/HealthBar" method="_on_player_hit"]
 [connection signal="mouse_entered" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_entered"]

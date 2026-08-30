@@ -1,17 +1,19 @@
-[gd_resource type="Resource" format=3 uid="uid://t0mqqu86gh3u"]
+[gd_resource type="Resource" format=3 uid="uid://c6ydmvxvh068d"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_1oafo"]
 [ext_resource type="Script" uid="uid://bmgpk44qdj1im" path="res://systems/upgrade/upgrades/add_ball/add_ball.gd" id="1_xhv5j"]
 
-[sub_resource type="Curve" id="Curve_xhv5j"]
-_limits = [1.0, 100000.0, 1.0, 6.0]
-_data = [Vector2(1, 2), 0.0, 0.0, 0, 0, Vector2(2, 100), 0.0, 0.0, 0, 0, Vector2(3, 1000), 0.0, 0.0, 0, 0, Vector2(4, 50000), 0.0, 0.0, 0, 0, Vector2(5.004, 80000), 0.0, 0.0, 0, 0, Vector2(5.9999995, 100000), 0.0, 0.0, 0, 0]
-point_count = 6
+[sub_resource type="Curve" id="Curve_1oafo"]
+_limits = [0.0, 2000.0, 1.0, 10.0]
+_data = [Vector2(1, 1), 0.0, 0.16437677, 0, 0, Vector2(2, 50), 0.030744804, 0.0, 0, 0, Vector2(3, 400), 0.030744804, 0.0, 0, 0, Vector2(4, 1400), 0.030744804, 0.0, 0, 0, Vector2(10, 2000), 0.030744804, 0.0, 0, 0]
+point_count = 5
+metadata/_snap_count = 2
 
 [resource]
 script = ExtResource("1_xhv5j")
-cost_curve = SubResource("Curve_xhv5j")
+cost_curve = SubResource("Curve_1oafo")
 max_upgrades = 6
 title = "+1 Ball"
-description = "Balls are really motivated to kill you, but they lack a clear sense of direction in life."
+description = "More balls is more better."
+flavor_text = "Balls are really motivated to kill you, but they lack a clear sense of direction in life. Currently adding +X balls."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

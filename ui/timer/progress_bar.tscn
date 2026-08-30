@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cdbi5j1lx0ri"]
+
+[ext_resource type="Texture2D" uid="uid://csk2d31lf5e4p" path="res://assets/timer bola branco.svg" id="1_fqo5a"]
+[ext_resource type="Script" uid="uid://btg2pjo8r11ef" path="res://progress_bar.gd" id="1_r58go"]
+[ext_resource type="Texture2D" uid="uid://ml0y1jqefkbt" path="res://assets/timer bola preto.svg" id="2_qckt5"]
+
+[node name="ProgressBar" type="TextureProgressBar" unique_id=671674136]
+anchors_preset = -1
+anchor_right = 0.172
+anchor_bottom = 0.30600002
+offset_right = -0.08000183
+offset_bottom = -0.16001129
+fill_mode = 4
+texture_under = ExtResource("1_fqo5a")
+texture_progress = ExtResource("2_qckt5")
+script = ExtResource("1_r58go")
