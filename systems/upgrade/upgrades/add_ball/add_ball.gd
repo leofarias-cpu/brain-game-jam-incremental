@@ -1,4 +1,4 @@
 extends Upgrade
 
-func upgrade(game: Game) -> void:
-	game.enemies.push_back(preload("uid://bmgpk44qdj1im"))
+func upgrade_effect() -> void:
+	game.enemies.push_back(preload("uid://cuovppwi20kvk"))

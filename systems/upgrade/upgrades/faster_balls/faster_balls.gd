@@ -1,5 +1,5 @@
 extends Upgrade
 
-func upgrade(game: Game):
+func upgrade_effect():
 	game.ball_stats.speed += 10
 	game.ball_stats.graze_mult *= 1.5

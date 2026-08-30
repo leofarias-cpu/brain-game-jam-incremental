@@ -2,14 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://dhcdtnx4ds3g5" path="res://ui/shop/shop_row.tscn" id="1_4mfh4"]
 [ext_resource type="Theme" uid="uid://dj1j8finhedt" path="res://ui/theme.tres" id="1_eil5d"]
+[ext_resource type="Script" uid="uid://rnb2ricfggik" path="res://ui/shop/shop.gd" id="2_eil5d"]
+[ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="3_hoijo"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/add_ball/add_ball.tres" id="4_abbq3"]
+[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/faster_balls/faster_balls.tres" id="5_xc065"]
 
-[node name="Shop" type="Panel" unique_id=429705958]
+[node name="Shop" type="Panel" unique_id=429705958 node_paths=PackedStringArray("upgrades_container")]
 custom_minimum_size = Vector2(350, 0)
-anchors_preset = 9
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
+mouse_filter = 1
 theme = ExtResource("1_eil5d")
+script = ExtResource("2_eil5d")
+initial_upgrades = Array[ExtResource("3_hoijo")]([ExtResource("4_abbq3"), ExtResource("5_xc065")])
+upgrades_container = NodePath("ScrollContainer/MarginContainer/Upgrades Container")
+shop_row = ExtResource("1_4mfh4")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=132587498]
 custom_minimum_size = Vector2(200, 50)
@@ -29,38 +41,14 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=887892471]
+[node name="Upgrades Container" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=887892471]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Header" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1438502207]
+[node name="Header" type="RichTextLabel" parent="ScrollContainer/MarginContainer/Upgrades Container" unique_id=1438502207]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 23
 text = "UPGRADES"
 scroll_active = false
 horizontal_alignment = 1
-
-[node name="Shop row3" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=30294692 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=798348602 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row2" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1102044626 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row4" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1222000873 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row5" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1250535858 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row6" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=740170638 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row7" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1710241633 instance=ExtResource("1_4mfh4")]
-layout_mode = 2
-
-[node name="Shop row8" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=105442334 instance=ExtResource("1_4mfh4")]
-layout_mode = 2

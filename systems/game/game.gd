@@ -17,6 +17,7 @@ class_name Game extends Node2D
 #@export var upgrades: Dictionary[PackedScene, int]
 @export var going_crazy_timer: Timer
 @export var round_end_position: Marker2D
+@export var round_start_position: Marker2D
 
 @export_group("Enemy Stats")
 @export var ball_stats: BallStats
@@ -29,6 +30,7 @@ class_name Game extends Node2D
 var money: int = 0:
 	set(v):
 		money = v
+		print(money)
 		money_set.emit(v)
 
 var score := 0:
@@ -49,15 +51,22 @@ func _ready() -> void:
 
 func round_start() -> void:
 	background.reset_gradient()
+	
+	await get_tree().create_timer(0.5).timeout
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	tween.tween_property(play_space, 'position', round_start_position.position, 0.5)
+	ui_layer.close_shop()
+	
 	setup_player()
 	clear_enemies()
 	spawn_enemies()
 	setup_timer()
+	
 	score = 0
 
 func round_end() -> void:
 	ui_layer.stop_timer()
-	money += score # TODO: signal on bofa
+	money += score
 	
 	await get_tree().create_timer(0.5).timeout
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
@@ -95,7 +104,7 @@ func clear_enemies() -> void:
 func setup_player() -> void:
 	player.hp = player_hp_max
 	player.speed = player_speed
-	player.position = play_space.position
+	player.position = round_start_position.position
 	
 
 func setup_timer() -> void:

@@ -2,8 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://dj1j8finhedt" path="res://ui/theme.tres" id="1_iyhv2"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_bh2l1"]
+[ext_resource type="Script" uid="uid://bwgubj12p1yqf" path="res://ui/shop/shop_row.gd" id="2_h1wgh"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/add_ball/add_ball.tres" id="3_h1wgh"]
+[ext_resource type="Theme" uid="uid://c8n2h0a5fv313" path="res://ui/numbers.tres" id="5_cf0wy"]
 
-[node name="Shop row" type="Button" unique_id=30294692]
+[node name="Shop row" type="Button" unique_id=30294692 node_paths=PackedStringArray("title", "cost", "description", "icon2")]
 custom_minimum_size = Vector2(-1, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,9 +14,15 @@ anchor_bottom = 1.0
 offset_bottom = -310.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.9966499)
 size_flags_horizontal = 3
+offset_transform_enabled = true
 theme = ExtResource("1_iyhv2")
+script = ExtResource("2_h1wgh")
+upgrade = ExtResource("3_h1wgh")
+title = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Title")
+cost = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Cost")
+description = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Description")
+icon2 = NodePath("MarginContainer/HBoxContainer/Icon")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1900796182]
 layout_mode = 1
@@ -53,16 +62,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 22
-text = "HAHA"
+text = "+1 Ball"
 scroll_active = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=195419741]
+[node name="Cost" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=195419741]
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -2)
 mouse_filter = 1
-theme = ExtResource("1_iyhv2")
+theme = ExtResource("5_cf0wy")
 theme_override_colors/default_color = Color(0.9098039, 0.74509805, 0, 1)
-theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/normal_font_size = 20
 text = "$1234567890"
 scroll_active = false
 horizontal_alignment = 2
@@ -72,7 +84,10 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme_override_colors/default_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
-theme_override_font_sizes/normal_font_size = 20
-text = "Ball ass pussy asdasdasdasdasdasdasdasdasd asdasd 
-"
+theme_override_font_sizes/normal_font_size = 18
+text = "Balls are really motivated to kill you, but they lack a clear sense of direction in life."
 scroll_active = false
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

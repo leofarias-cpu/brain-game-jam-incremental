@@ -9,11 +9,13 @@
 [ext_resource type="Script" uid="uid://c5jcr48ke1ckg" path="res://systems/game/background.gd" id="6_2ub4j"]
 [ext_resource type="PackedScene" uid="uid://cejcjsd3sgueb" path="res://entities/play space/PlaySpace.tscn" id="6_q6kid"]
 [ext_resource type="Script" uid="uid://cywl8bvl3tnr0" path="res://ui/ui.gd" id="7_7o6gp"]
-[ext_resource type="Script" uid="uid://d2jv2neubkwrw" path="res://systems/upgrade/UpgradesManager.gd" id="7_sc4om"]
-[ext_resource type="Theme" uid="uid://dj1j8finhedt" path="res://ui/theme.tres" id="7_tpamu"]
 [ext_resource type="PackedScene" uid="uid://t75eoijc21wo" path="res://ui/timer/timer.tscn" id="7_xtdty"]
+[ext_resource type="Script" uid="uid://beskiny3ssb4g" path="res://ui/round_start_button/round_start_button.gd" id="8_7o6gp"]
+[ext_resource type="Theme" uid="uid://5n106qihfu7r" path="res://ui/round_start_button/round_start_button.tres" id="8_s2ak1"]
 [ext_resource type="Theme" uid="uid://c8n2h0a5fv313" path="res://ui/numbers.tres" id="8_stwo3"]
 [ext_resource type="PackedScene" uid="uid://bol2w53j30opf" path="res://ui/shop/Shop.tscn" id="10_fws3a"]
+[ext_resource type="FontFile" uid="uid://bcvxpijxpi37a" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Regular.ttf" id="10_s2ak1"]
+[ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="11_danal"]
 
 [sub_resource type="Resource" id="Resource_sc4om"]
 script = ExtResource("3_fcqpf")
@@ -32,6 +34,66 @@ colors = PackedColorArray(0.15264732, 0.0059507596, 0.1933791, 1, 0, 0, 0, 1, 0.
 gradient = SubResource("Gradient_80nbo")
 fill_to = Vector2(1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wehse"]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.38039216, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.17849998, 0.37995, 0.85, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyufp"]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.38039216, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.17849998, 0.37995, 0.85, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acwcx"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.38039216, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.17849998, 0.37995, 0.85, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2pfc"]
+bg_color = Color(0.24557537, 0.025709817, 0.10281246, 0.23921569)
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_3gm7n"]
+Button/fonts/font = ExtResource("10_s2ak1")
+Button/styles/hover = SubResource("StyleBoxFlat_wehse")
+Button/styles/normal = SubResource("StyleBoxFlat_fyufp")
+Button/styles/pressed = SubResource("StyleBoxFlat_acwcx")
+Panel/styles/panel = SubResource("StyleBoxFlat_n2pfc")
+RichTextLabel/fonts/italics_font = ExtResource("11_danal")
+RichTextLabel/fonts/normal_font = ExtResource("10_s2ak1")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tga20"]
 bg_color = Color(1, 0.116666675, 0, 1)
 border_width_left = 1
@@ -40,7 +102,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.41, 0, 0, 1)
 
-[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "ui_layer", "background")]
+[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "round_start_position", "ui_layer", "background")]
 script = ExtResource("1_tsptn")
 player = NodePath("Player")
 play_space = NodePath("PlaySpace")
@@ -50,6 +112,7 @@ play_space_border_width = 6.0
 enemies = Array[PackedScene]([ExtResource("4_fcqpf"), ExtResource("4_fcqpf")])
 going_crazy_timer = NodePath("Going Crazy Timer")
 round_end_position = NodePath("RoundEndPosition")
+round_start_position = NodePath("RoundStartPosition")
 ball_stats = SubResource("Resource_sc4om")
 ui_layer = NodePath("UI Layer")
 background = NodePath("Camera2D/Background")
@@ -62,6 +125,9 @@ position = Vector2(320, 192)
 [node name="RoundEndPosition" type="Marker2D" parent="." unique_id=2137110470]
 position = Vector2(140, 192)
 gizmo_extents = 15.5
+
+[node name="RoundStartPosition" type="Marker2D" parent="." unique_id=637539865]
+position = Vector2(320, 192)
 
 [node name="PlaySpace" parent="." unique_id=1075310213 instance=ExtResource("6_q6kid")]
 position = Vector2(320, 192)
@@ -77,7 +143,7 @@ scale = Vector2(10.015625, 5.633789)
 texture = SubResource("GradientTexture2D_tga20")
 script = ExtResource("6_2ub4j")
 
-[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("score_and_time_container", "money", "round_end_position", "shop", "timer")]
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("score_and_time_container", "money", "round_end_position", "shop", "timer", "round_start_button")]
 process_mode = 3
 script = ExtResource("7_7o6gp")
 score_and_time_container = NodePath("MarginContainer/VBoxContainer")
@@ -85,6 +151,22 @@ money = NodePath("MarginContainer/Money")
 round_end_position = NodePath("../RoundEndPosition")
 shop = NodePath("Shop")
 timer = NodePath("MarginContainer/VBoxContainer/Timer")
+round_start_button = NodePath("Round Start")
+
+[node name="Round Start" type="Button" parent="UI Layer" unique_id=1109474704 node_paths=PackedStringArray("game")]
+visible = false
+custom_minimum_size = Vector2(50, 20)
+offset_left = 117.0
+offset_top = 311.0
+offset_right = 167.0
+offset_bottom = 331.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+offset_transform_enabled = true
+theme = ExtResource("8_s2ak1")
+text = "AGAIN!"
+script = ExtResource("8_7o6gp")
+game = NodePath("../..")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI Layer" unique_id=2037058904]
 anchors_preset = 15
@@ -93,7 +175,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-theme = ExtResource("7_tpamu")
+mouse_filter = 2
+theme = SubResource("Theme_3gm7n")
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
@@ -163,20 +246,14 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tga20")
 
-[node name="Shop" parent="UI Layer" unique_id=429705958 instance=ExtResource("10_fws3a")]
+[node name="Shop" parent="UI Layer" unique_id=429705958 node_paths=PackedStringArray("game") instance=ExtResource("10_fws3a")]
 custom_minimum_size = Vector2(350, -1)
 custom_maximum_size = Vector2(350, -1)
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
 offset_transform_enabled = true
 offset_transform_position = Vector2(350, 0)
-
-[node name="Upgrades" type="Node2D" parent="." unique_id=402822264]
-script = ExtResource("7_sc4om")
+game = NodePath("../..")
 
 [connection signal="money_set" from="." to="UI Layer" method="_on_game_money_set"]
 [connection signal="score_set" from="." to="UI Layer/MarginContainer/VBoxContainer/Score" method="_on_game_score_set"]
@@ -186,3 +263,6 @@ script = ExtResource("7_sc4om")
 [connection signal="graze" from="Player" to="UI Layer/MarginContainer/VBoxContainer/Score" method="_on_player_graze"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="hit" from="Player" to="UI Layer/MarginContainer/HealthBar" method="_on_player_hit"]
+[connection signal="mouse_entered" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_pressed"]
