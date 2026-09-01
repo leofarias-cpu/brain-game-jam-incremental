@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://xrywkkfs13"]
+
+[ext_resource type="Script" uid="uid://bgkvv1t5w2o6w" path="res://entities/arrow guy/shooter.gd" id="1_fpx42"]
+[ext_resource type="PackedScene" uid="uid://cvqav5cqoc1kt" path="res://entities/arrow guy/bullet.tscn" id="2_0au16"]
+[ext_resource type="Script" uid="uid://f0lxmjsgx6ui" path="res://entities/arrow guy/bullet_stats.gd" id="3_3d0vn"]
+[ext_resource type="Script" uid="uid://bblpm1hk8wrtx" path="res://entities/arrow guy/shooter_stats.gd" id="3_fpx42"]
+[ext_resource type="Texture2D" uid="uid://csygqc3rkwmxh" path="res://assets/Shape Characters/Vector/overview.svg" id="4_xpig6"]
+
+[sub_resource type="Resource" id="Resource_fpx42"]
+script = ExtResource("3_3d0vn")
+graze = 5
+speed = 40.0
+metadata/_custom_type_script = "uid://f0lxmjsgx6ui"
+
+[sub_resource type="Resource" id="Resource_08nj3"]
+script = ExtResource("3_fpx42")
+bullet_stats = SubResource("Resource_fpx42")
+bullet_amount = 6
+shooting_cooldown = 1.0
+speed = 20.0
+metadata/_custom_type_script = "uid://bblpm1hk8wrtx"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_g1efn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/Hand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6457718]
+}
+
+[sub_resource type="Animation" id="Animation_x3tya"]
+resource_name = "shoot"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Body/Hand:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 1),
+"transitions": PackedFloat32Array(1, 4.1410522, 1),
+"update": 0,
+"values": [0.6457718, 0.8726646259971648, -0.53232545]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_apshw"]
+_data = {
+&"RESET": SubResource("Animation_g1efn"),
+&"shoot": SubResource("Animation_x3tya")
+}
+
+[node name="ArrowGuy" type="CharacterBody2D" unique_id=1947604422 node_paths=PackedStringArray("bullets_group", "bullet_spawn_point", "animation_player", "cooldown_timer")]
+script = ExtResource("1_fpx42")
+bullet_scene = ExtResource("2_0au16")
+bullets_group = NodePath("Bullets")
+bullet_spawn_point = NodePath("Body/BulletSpawnPoint")
+animation_player = NodePath("AnimationPlayer")
+stats = SubResource("Resource_08nj3")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=890313536]
+shape = SubResource("CircleShape2D_tga20")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1031559664]
+position = Vector2(0, 4.7683716e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_xpig6")
+region_enabled = true
+region_rect = Rect2(300, 40, 80, 80)
+
+[node name="Hand" type="Sprite2D" parent="Body" unique_id=7037713]
+position = Vector2(65.00001, -2.6077041e-06)
+rotation = 0.6457718
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_xpig6")
+region_enabled = true
+region_rect = Rect2(31, 139, 40, 42)
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="Body" unique_id=808274882]
+position = Vector2(90, -2)
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="Bullets" type="Node2D" parent="." unique_id=347424684]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1778357532]
+root_node = NodePath("../Bullets")
+libraries/ = SubResource("AnimationLibrary_apshw")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1471478603]
+
+[connection signal="timeout" from="CooldownTimer" to="." method="shoot"]

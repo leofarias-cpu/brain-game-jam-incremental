@@ -4,6 +4,8 @@ class_name UI extends CanvasLayer
 @export var round_end_position: Marker2D
 @export var shop: Shop
 @export var timer: TimerLabel
+@export var timer_progress_bar: TextureProgressBar
+
 @export var round_start_button: Button
 @export var score: RichTextLabel
 
@@ -38,6 +40,8 @@ func close_shop():
 	
 	await shop_move.finished
 	shop.visible = false
+	
+	timer_progress_bar.reset()
 	
 func stop_timer():
 	timer.stop()

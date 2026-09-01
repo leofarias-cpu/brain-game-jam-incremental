@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dlo2vuutvyt6t" path="res://systems/game/game.gd" id="1_tsptn"]
 [ext_resource type="Script" uid="uid://15xasm51ymrj" path="res://ui/scoreTracker.gd" id="2_q6kid"]
 [ext_resource type="Script" uid="uid://4jddw1rvvtvi" path="res://entities/ball/ball_stats.gd" id="3_fcqpf"]
+[ext_resource type="Script" uid="uid://f0lxmjsgx6ui" path="res://entities/arrow guy/bullet_stats.gd" id="4_3gm7n"]
 [ext_resource type="PackedScene" uid="uid://cuovppwi20kvk" path="res://entities/ball/ball.tscn" id="4_fcqpf"]
 [ext_resource type="PackedScene" uid="uid://budtopphq6vwo" path="res://entities/player/player.tscn" id="5_2ub4j"]
 [ext_resource type="Script" uid="uid://c5jcr48ke1ckg" path="res://systems/game/background.gd" id="6_2ub4j"]
@@ -29,6 +30,12 @@ graze = 1
 radius = 10.0
 color = Color(0.9098039, 0.74509805, 0, 1)
 metadata/_custom_type_script = "uid://4jddw1rvvtvi"
+
+[sub_resource type="Resource" id="Resource_n2pfc"]
+script = ExtResource("4_3gm7n")
+graze = 5
+speed = 40.0
+metadata/_custom_type_script = "uid://f0lxmjsgx6ui"
 
 [sub_resource type="Gradient" id="Gradient_80nbo"]
 interpolation_mode = 2
@@ -115,6 +122,7 @@ going_crazy_timer = NodePath("Going Crazy Timer")
 round_end_position = NodePath("RoundEndPosition")
 round_start_position = NodePath("RoundStartPosition")
 ball_stats = SubResource("Resource_sc4om")
+bullet_stats = SubResource("Resource_n2pfc")
 ui_layer = NodePath("UI Layer")
 background = NodePath("Camera2D/Background")
 shop = NodePath("UI Layer/Shop")
@@ -145,13 +153,14 @@ scale = Vector2(10.015625, 5.633789)
 texture = SubResource("GradientTexture2D_tga20")
 script = ExtResource("6_2ub4j")
 
-[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("money", "round_end_position", "shop", "timer", "round_start_button", "score")]
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("money", "round_end_position", "shop", "timer", "timer_progress_bar", "round_start_button", "score")]
 process_mode = 3
 script = ExtResource("7_7o6gp")
 money = NodePath("MarginContainer/Money")
 round_end_position = NodePath("../RoundEndPosition")
 shop = NodePath("Shop")
 timer = NodePath("MarginContainer/HBoxContainer/Timer")
+timer_progress_bar = NodePath("MarginContainer/HBoxContainer/ProgressBar")
 round_start_button = NodePath("Round Start")
 score = NodePath("MarginContainer/Score")
 

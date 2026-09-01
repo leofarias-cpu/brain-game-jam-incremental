@@ -22,6 +22,8 @@ class_name Game extends Node2D
 @export_group("Enemy Stats")
 @export var ball_stats: BallStats
 @export var enable_evil_ball = false
+@export var bullet_stats: BulletStats
+@export var bulle_amount: int = 3
 
 @export_group("UI")
 @export var ui_layer: UI
@@ -101,6 +103,12 @@ func spawn_enemies() -> void:
 				
 				new_enemy.stats = evil_ball_stats
 		
+		if new_enemy is Shooter:
+			new_enemy.bullet_stats = bullet_stats
+			new_enemy.bullet_amount = bulle_amount
+			new_enemy.lower_bound = play_space.global_position.y -play_space_height / 2 + play_space_border_width
+			new_enemy.upper_bound_bound = play_space.global_position.y + play_space_height / 2 - play_space_border_width
+	
 		if new_enemy.has_method("go_crazy"):
 			going_crazy_timer.timeout.connect(new_enemy.go_crazy)
 		

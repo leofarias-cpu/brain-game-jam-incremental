@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_graze_area_area_entered(area: Area2D) -> void:
 	if area is Grazeable:
-		graze.emit(area.graze)
+		graze.emit(area.get_graze_value())
 		var tween := get_tree().create_tween()
 		tween.tween_property(sprite, 'modulate', Color(0.431, 0.865, 0.51, 1.0), 0.2)
 		tween.tween_property(sprite, 'modulate', Color(1.0, 1.0, 1.0, 1.0), 0.1)

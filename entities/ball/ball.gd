@@ -8,8 +8,8 @@ var speed_current: float
 @export var hitbox_collision: CollisionShape2D
 
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, stats.radius, stats.color, true, -1, true)
+#func _draw() -> void:
+	#draw_circle(Vector2.ZERO, stats.radius, stats.color, true, -1, true)
 
 
 func _ready() -> void:
@@ -18,7 +18,6 @@ func _ready() -> void:
 	facing_direction = Vector2.from_angle(deg_to_rad(randf_range(0, 360))).normalized()
 	
 	speed_current = stats.speed
-	hitbox.graze = stats.graze * stats.graze_mult
 	
 	physics_collision.shape.radius = stats.radius * 0.9 # If its the same size the ball just bounce off the player
 	hitbox_collision.shape.radius = stats.radius
@@ -36,3 +35,7 @@ func go_crazy():
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, "speed_current", speed_current * 1.5, 0.5)
 	tween.tween_property(self, "modulate", Color.FIREBRICK, 0.5)
+
+func get_graze_value() -> int:
+	return stats.graze * stats.graze_mult
+	
