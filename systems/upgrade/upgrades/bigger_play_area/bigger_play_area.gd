@@ -6,7 +6,7 @@ func upgrade_effect():
 		game.add_upgrade(preload("uid://br6ratl7velv5"))
 		game.add_upgrade(preload("uid://c5jbdn3d7l11q"))
 	elif current_upgrades == 2:
-		pass
+		game.add_upgrade(preload("uid://c1gkakkt5gune"))
 		# Arrow thing
 		# PLayer speed
 		

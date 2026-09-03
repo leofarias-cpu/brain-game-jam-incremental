@@ -12,6 +12,6 @@ point_count = 6
 script = ExtResource("2_fshli")
 cost_curve = SubResource("Curve_xhv5j")
 max_upgrades = 100
-title = "More Ball Money"
-description = "[font=res://assets/nova_script/NovaScript-Regular.ttf][color=#e8be00]+1$[/color][/font] on Ball graze."
+title = "More Ball Score"
+description = "+1 score on Ball graze."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

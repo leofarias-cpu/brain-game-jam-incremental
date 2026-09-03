@@ -1,30 +1,18 @@
 class_name Ball extends CharacterBody2D
 
 var facing_direction: Vector2
-var speed_current: float
 @export var stats: BallStats
 @export var hitbox: Grazeable
 @export var physics_collision: CollisionShape2D
 @export var hitbox_collision: CollisionShape2D
-
-
-#func _draw() -> void:
-	#draw_circle(Vector2.ZERO, stats.radius, stats.color, true, -1, true)
-
+var speed_multiplier := 1.0
 
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
-	
-	facing_direction = Vector2.from_angle(deg_to_rad(randf_range(0, 360))).normalized()
-	
-	speed_current = stats.speed
-	
-	physics_collision.shape.radius = stats.radius * 0.9 # If its the same size the ball just bounce off the player
-	hitbox_collision.shape.radius = stats.radius
+	reset()
 
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(speed_current * facing_direction * delta)
+	var collision = move_and_collide(stats.get_speed() * facing_direction * delta)
 	if collision:
 		var reflect = collision.get_remainder().bounce(collision.get_normal())
 		# + random to avoid a ball bouncing perfectly in a straight line
@@ -33,9 +21,15 @@ func _physics_process(delta: float) -> void:
 
 func go_crazy():
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(self, "speed_current", speed_current * 1.5, 0.5)
+	tween.tween_property(self.stats, "speed", stats.get_speed() * 1.5, 0.5)
 	tween.tween_property(self, "modulate", Color.FIREBRICK, 0.5)
 
 func get_graze_value() -> int:
-	return stats.graze * stats.graze_mult
-	
+	return stats.get_graze() * stats.get_graze_mult()
+
+func reset():
+	await get_tree().create_timer(1).timeout
+	facing_direction = Vector2.from_angle(deg_to_rad(randf_range(0, 360))).normalized()
+
+func set_stats(stats: BallStats):
+	self.stats = stats

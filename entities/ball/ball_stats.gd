@@ -4,5 +4,12 @@ extends Resource
 @export var speed: float
 @export var graze: int
 @export var graze_mult: float = 1
-@export var radius: float
-@export var color: Color
+
+func get_speed() -> float:
+	return self.speed
+
+func get_graze() -> int:
+	return self.graze
+
+func get_graze_mult()  -> float:
+	return self.graze_mult

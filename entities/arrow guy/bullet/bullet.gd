@@ -6,11 +6,14 @@ var direction: int = 1
 signal hit(bullet: Bullet)
 
 var disabled := true
+var go_crazy := false
 
 func _physics_process(delta: float) -> void:
 	if disabled: return
 	
-	var collision := move_and_collide(Vector2(stats.speed, 0) * direction *delta)
+	var speed : float = stats.speed * (1.5 if go_crazy else 1.0)
+	var collision := move_and_collide(Vector2(speed, 0) * direction * delta)
+	
 	if collision:
 		hit.emit(self)
 

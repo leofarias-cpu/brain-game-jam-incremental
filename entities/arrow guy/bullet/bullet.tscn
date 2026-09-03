@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://cvqav5cqoc1kt"]
 
-[ext_resource type="Script" uid="uid://b2vvrxctjt82n" path="res://entities/arrow guy/bullet.gd" id="1_o4n6d"]
+[ext_resource type="Script" uid="uid://b2vvrxctjt82n" path="res://entities/arrow guy/bullet/bullet.gd" id="1_o4n6d"]
 [ext_resource type="Texture2D" uid="uid://b1spr0apg5fl1" path="res://assets/arrow_thing.svg" id="2_tc4c0"]
-[ext_resource type="Script" uid="uid://cpictss3s0lf6" path="res://entities/arrow guy/hitbox.gd" id="3_411ux"]
+[ext_resource type="Script" uid="uid://cpictss3s0lf6" path="res://entities/arrow guy/bullet/hitbox.gd" id="3_411ux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
 radius = 0.7
 
 [node name="Bullet" type="CharacterBody2D" unique_id=946418913]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_o4n6d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1831538680]
@@ -19,6 +21,7 @@ scale = Vector2(0.07364341, 0.073643416)
 texture = ExtResource("2_tc4c0")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1020115857 node_paths=PackedStringArray("bullet")]
+collision_layer = 2
 script = ExtResource("3_411ux")
 bullet = NodePath("..")
 

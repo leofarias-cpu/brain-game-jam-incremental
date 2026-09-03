@@ -54,7 +54,7 @@ func enable():
 	self.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	
 func move_away():
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1).timeout
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SPRING)
 	var tweener := tween.tween_property(self, "offset_transform_position", Vector2(350, 0), 1)
 	await tweener.finished

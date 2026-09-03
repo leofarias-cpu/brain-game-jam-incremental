@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://lakuupc3ybdi"]
+
+[ext_resource type="Script" uid="uid://c8jd8v5aujsw3" path="res://entities/ball/evil/evil_ball.gd" id="1_3ldho"]
+[ext_resource type="Script" uid="uid://b3rik67xq5m22" path="res://entities/ball/ball_hittbox.gd" id="2_bk7bf"]
+[ext_resource type="Texture2D" uid="uid://csygqc3rkwmxh" path="res://assets/Shape Characters/Vector/overview.svg" id="3_vtvr8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5d6p"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cyx3h"]
+radius = 7.5
+
+[node name="EvilBall" type="CharacterBody2D" unique_id=198783946 node_paths=PackedStringArray("hitbox", "physics_collision", "hitbox_collision") groups=["enemies"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_3ldho")
+hitbox = NodePath("Hittbox")
+physics_collision = NodePath("PhysicsCollision")
+hitbox_collision = NodePath("Hittbox/CollisionShape2D")
+
+[node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=1538613878]
+shape = SubResource("CircleShape2D_i5d6p")
+debug_color = Color(0.9432985, 0.17708531, 0.4142804, 0.41960785)
+
+[node name="Hittbox" type="Area2D" parent="." unique_id=968640434 node_paths=PackedStringArray("ball")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("2_bk7bf")
+ball = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hittbox" unique_id=834756015]
+shape = SubResource("CircleShape2D_cyx3h")
+
+[node name="Overview" type="Sprite2D" parent="." unique_id=737003818]
+position = Vector2(9.536743e-07, 3.8146973e-06)
+scale = Vector2(-0.2, 0.2)
+texture = ExtResource("3_vtvr8")
+region_enabled = true
+region_rect = Rect2(498.58038, 39.68904, 82, 81)

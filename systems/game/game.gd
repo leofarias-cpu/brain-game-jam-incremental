@@ -7,9 +7,9 @@ class_name Game extends Node2D
 
 @export_group("Play Space", "play_space_")
 @export var play_space: PlaySpace
-@export var play_space_height: float
-@export var play_space_width: float
-@export var play_space_border_width: float
+@export var play_space_height: int
+@export var play_space_width: int
+@export var play_space_border_width: int
 
 @export_group("")
 @export var enemies: Array[PackedScene]
@@ -21,9 +21,9 @@ class_name Game extends Node2D
 
 @export_group("Enemy Stats")
 @export var ball_stats: BallStats
-@export var enable_evil_ball = false
-@export var bullet_stats: BulletStats
+@export var shooter_stats: ShooterStats
 @export var bulle_amount: int = 3
+var next_shooter_direction = 1
 
 @export_group("UI")
 @export var ui_layer: UI
@@ -47,6 +47,8 @@ signal score_set(value: int)
 
 func _ready() -> void:
 	set_play_space_size(play_space_height, play_space_width, play_space_border_width)
+	for enemy in enemies:
+		add_enemy(enemy)
 	round_start()
 
 func round_start() -> void:
@@ -56,12 +58,12 @@ func round_start() -> void:
 	play_space.reset_border_color()
 	
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	ui_layer.close_shop()
 	tween.tween_property(play_space, 'position', round_start_position.position, 0.5)
 	
+	ui_layer.close_shop()
+	
 	setup_player()
-	clear_enemies()
-	spawn_enemies()
+	reset_enemies()
 	setup_timer()
 	
 	score = 0
@@ -76,52 +78,51 @@ func round_end() -> void:
 	
 	ui_layer.show_shop()
 	
-func spawn_enemies() -> void:
-	for i in enemies.size():
-		var scene = enemies[i]
-		var new_enemy = scene.instantiate()
-		
-		if new_enemy is Node2D:
-			const directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
-			
-			var direction: Vector2 = directions[i % 4]
-			
-			new_enemy.position = play_space.get_point_from_side(direction, 0.4)
-			new_enemy.rotation = direction.angle()
-			new_enemy.add_to_group('enemies')
-			print(new_enemy.position)
-		
-		if new_enemy is Ball:
-			new_enemy.stats = ball_stats
-			if i == 1 and enable_evil_ball:
-				var evil_ball_stats = BallStats.new()
-				evil_ball_stats.speed = ball_stats.speed * 1.5
-				evil_ball_stats.graze = ball_stats.graze + 10
-				evil_ball_stats.graze_mult = ball_stats.graze_mult + 2
-				evil_ball_stats.radius = ball_stats.radius * 1.5
-				evil_ball_stats.color = Color(0.387, 0.052, 0.488, 1.0)
-				
-				new_enemy.stats = evil_ball_stats
-		
-		if new_enemy is Shooter:
-			new_enemy.bullet_stats = bullet_stats
-			new_enemy.bullet_amount = bulle_amount
-			new_enemy.lower_bound = play_space.global_position.y -play_space_height / 2 + play_space_border_width
-			new_enemy.upper_bound_bound = play_space.global_position.y + play_space_height / 2 - play_space_border_width
+func add_enemy(enemy_scene: PackedScene):
+	var enemy = enemy_scene.instantiate()
 	
-		if new_enemy.has_method("go_crazy"):
-			going_crazy_timer.timeout.connect(new_enemy.go_crazy)
+	const directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+	var direction: Vector2 = directions.pick_random()
+	
+	enemy.position = play_space.get_point_from_side(direction, 0.4)
+	
+	if enemy is Ball:
+		enemy.set_stats(ball_stats)
+	elif enemy is Shooter:
+		enemy.stats = shooter_stats
+		enemy.game = self
+		enemy.lower_bound = play_space.global_position.y -play_space_height / 2 + play_space_border_width
+		enemy.upper_bound = play_space.global_position.y + play_space_height / 2 - play_space_border_width
+		enemy.direction = next_shooter_direction
 		
-		play_space.add_child(new_enemy)
+		next_shooter_direction *= -1
+		
+	if enemy.has_method("go_crazy"):
+		going_crazy_timer.timeout.connect(enemy.go_crazy)
+	
+	play_space.add_child(enemy)
 
-func clear_enemies() -> void:
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		enemy.queue_free()
+func reset_enemies():
+	var enemies_list =  get_tree().get_nodes_in_group("enemies")
+	for i in enemies_list.size():
+		var enemy = enemies_list[i]
+		enemy.reset()
+		
+		if enemy is Ball:
+			const directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+			var direction: Vector2 = directions[i % 4]
+			get_tree().create_tween().tween_property(enemy, "position", play_space.get_point_from_side(direction, 0.4), 1)
+
 
 func setup_player() -> void:
+	player.invincible = true
+	
 	player.hp = player_hp_max
 	player.speed = player_speed
 	player.position = round_start_position.position
+	
+	await get_tree().create_timer(1).timeout
+	player.invincible = false
 	
 
 func setup_timer() -> void:

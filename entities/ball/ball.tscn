@@ -20,6 +20,7 @@ hitbox_collision = NodePath("Hittbox/CollisionShape2D")
 
 [node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=195362136]
 shape = SubResource("CircleShape2D_tga20")
+debug_color = Color(0.9432985, 0.17708531, 0.4142804, 0.41960785)
 
 [node name="Hittbox" type="Area2D" parent="." unique_id=723800753 node_paths=PackedStringArray("ball")]
 collision_layer = 2
