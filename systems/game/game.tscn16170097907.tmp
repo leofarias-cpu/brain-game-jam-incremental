@@ -1,0 +1,283 @@
+[gd_scene format=3 uid="uid://c08a5piqbmx16"]
+
+[ext_resource type="Script" uid="uid://dlo2vuutvyt6t" path="res://systems/game/game.gd" id="1_tsptn"]
+[ext_resource type="Script" uid="uid://15xasm51ymrj" path="res://ui/scoreTracker.gd" id="2_q6kid"]
+[ext_resource type="Script" uid="uid://4jddw1rvvtvi" path="res://entities/ball/ball_stats.gd" id="3_fcqpf"]
+[ext_resource type="Script" uid="uid://f0lxmjsgx6ui" path="res://entities/arrow guy/bullet/bullet_stats.gd" id="4_3gm7n"]
+[ext_resource type="PackedScene" uid="uid://cuovppwi20kvk" path="res://entities/ball/ball.tscn" id="4_fcqpf"]
+[ext_resource type="PackedScene" uid="uid://budtopphq6vwo" path="res://entities/player/player.tscn" id="5_2ub4j"]
+[ext_resource type="Script" uid="uid://c5jcr48ke1ckg" path="res://systems/game/background.gd" id="6_2ub4j"]
+[ext_resource type="PackedScene" uid="uid://cejcjsd3sgueb" path="res://entities/play space/PlaySpace.tscn" id="6_q6kid"]
+[ext_resource type="Script" uid="uid://cywl8bvl3tnr0" path="res://ui/ui.gd" id="7_7o6gp"]
+[ext_resource type="Script" uid="uid://bblpm1hk8wrtx" path="res://entities/arrow guy/shooter_stats.gd" id="7_8ssvi"]
+[ext_resource type="PackedScene" uid="uid://t75eoijc21wo" path="res://ui/timer/timer.tscn" id="7_xtdty"]
+[ext_resource type="Script" uid="uid://beskiny3ssb4g" path="res://ui/round_start_button/round_start_button.gd" id="8_7o6gp"]
+[ext_resource type="Theme" uid="uid://5n106qihfu7r" path="res://ui/round_start_button/round_start_button.tres" id="8_s2ak1"]
+[ext_resource type="Theme" uid="uid://c8n2h0a5fv313" path="res://ui/numbers.tres" id="8_stwo3"]
+[ext_resource type="PackedScene" uid="uid://bol2w53j30opf" path="res://ui/shop/Shop.tscn" id="10_fws3a"]
+[ext_resource type="FontFile" uid="uid://bcvxpijxpi37a" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Regular.ttf" id="10_s2ak1"]
+[ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="11_danal"]
+[ext_resource type="PackedScene" uid="uid://cdbi5j1lx0ri" path="res://ui/timer/progress_bar.tscn" id="14_8ssvi"]
+[ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="17_acwcx"]
+[ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/ball_add/add_ball.tres" id="18_n2pfc"]
+[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/balls_faster/faster_balls.tres" id="19_3gm7n"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/ball_more_money/more_ball_money.tres" id="19_n2pfc"]
+[ext_resource type="Resource" uid="uid://ckd4xp572i1ba" path="res://systems/upgrade/upgrades/bigger_play_area/bigger_play_area.tres" id="20_8ssvi"]
+
+[sub_resource type="Resource" id="Resource_sc4om"]
+script = ExtResource("3_fcqpf")
+speed = 25.0
+graze = 1
+metadata/_custom_type_script = "uid://4jddw1rvvtvi"
+
+[sub_resource type="Resource" id="Resource_8ssvi"]
+script = ExtResource("4_3gm7n")
+graze = 20
+speed = 40.0
+metadata/_custom_type_script = "uid://f0lxmjsgx6ui"
+
+[sub_resource type="Resource" id="Resource_3gm7n"]
+script = ExtResource("7_8ssvi")
+bullet_stats = SubResource("Resource_8ssvi")
+bullet_amount = 4
+speed = 20.0
+metadata/_custom_type_script = "uid://bblpm1hk8wrtx"
+
+[sub_resource type="Gradient" id="Gradient_80nbo"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.50301206, 1)
+colors = PackedColorArray(0.23, 0.018399997, 0.053666726, 1, 0, 0, 0, 1, 0.0062052268, 0.102160506, 0.21313933, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tga20"]
+gradient = SubResource("Gradient_80nbo")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wehse"]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.38039216, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.17849998, 0.37995, 0.85, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyufp"]
+bg_color = Color(0.08468992, 0.08468994, 0.08468988, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.38039216, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.17849998, 0.37995, 0.85, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acwcx"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.38039216, 0.8509804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.17849998, 0.37995, 0.85, 0.3254902)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ivg0e"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2pfc"]
+bg_color = Color(0.24557537, 0.025709817, 0.10281246, 0.23921569)
+corner_radius_top_left = 40
+corner_radius_bottom_left = 40
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_3gm7n"]
+Button/fonts/font = ExtResource("10_s2ak1")
+Button/styles/hover = SubResource("StyleBoxFlat_wehse")
+Button/styles/normal = SubResource("StyleBoxFlat_fyufp")
+Button/styles/pressed = SubResource("StyleBoxFlat_acwcx")
+HSeparator/styles/separator = SubResource("StyleBoxLine_ivg0e")
+Panel/styles/panel = SubResource("StyleBoxFlat_n2pfc")
+RichTextLabel/fonts/italics_font = ExtResource("11_danal")
+RichTextLabel/fonts/normal_font = ExtResource("10_s2ak1")
+
+[node name="Game" type="Node2D" unique_id=1060518661 node_paths=PackedStringArray("player", "play_space", "going_crazy_timer", "round_end_position", "round_start_position", "ui_layer", "background", "shop")]
+script = ExtResource("1_tsptn")
+player = NodePath("Player")
+play_space = NodePath("PlaySpace")
+play_space_height = 100
+play_space_width = 100
+play_space_border_width = 6
+enemies = Array[PackedScene]([ExtResource("4_fcqpf"), ExtResource("4_fcqpf")])
+going_crazy_timer = NodePath("Going Crazy Timer")
+round_end_position = NodePath("RoundEndPosition")
+round_start_position = NodePath("RoundStartPosition")
+ball_stats = SubResource("Resource_sc4om")
+shooter_stats = SubResource("Resource_3gm7n")
+ui_layer = NodePath("UI Layer")
+background = NodePath("Camera2D/Background")
+shop = NodePath("UI Layer/Shop")
+
+[node name="Going Crazy Timer" type="Timer" parent="." unique_id=1303384587]
+
+[node name="Player" parent="." unique_id=1423667927 instance=ExtResource("5_2ub4j")]
+position = Vector2(320, 192)
+
+[node name="RoundEndPosition" type="Marker2D" parent="." unique_id=2137110470]
+position = Vector2(140, 192)
+gizmo_extents = 15.5
+
+[node name="RoundStartPosition" type="Marker2D" parent="." unique_id=637539865]
+position = Vector2(320, 192)
+
+[node name="PlaySpace" parent="." unique_id=1075310213 instance=ExtResource("6_q6kid")]
+position = Vector2(320, 192)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1565455197]
+position = Vector2(321, 180)
+
+[node name="Background" type="Sprite2D" parent="Camera2D" unique_id=1646228377]
+z_index = -8
+z_as_relative = false
+position = Vector2(-0.5, 0.28125)
+scale = Vector2(10.015625, 5.633789)
+texture = SubResource("GradientTexture2D_tga20")
+script = ExtResource("6_2ub4j")
+
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("money", "round_end_position", "shop", "timer", "timer_progress_bar", "round_start_button", "score")]
+process_mode = 3
+script = ExtResource("7_7o6gp")
+money = NodePath("MarginContainer/Money")
+round_end_position = NodePath("../RoundEndPosition")
+shop = NodePath("Shop")
+timer = NodePath("MarginContainer/HBoxContainer/Timer")
+timer_progress_bar = NodePath("MarginContainer/HBoxContainer/ProgressBar")
+round_start_button = NodePath("Round Start")
+score = NodePath("MarginContainer/Score")
+
+[node name="Round Start" type="Button" parent="UI Layer" unique_id=1109474704 node_paths=PackedStringArray("game")]
+visible = false
+custom_minimum_size = Vector2(50, 20)
+offset_left = 117.0
+offset_top = 311.0
+offset_right = 167.0
+offset_bottom = 331.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+offset_transform_enabled = true
+theme = ExtResource("8_s2ak1")
+text = "AGAIN!"
+script = ExtResource("8_7o6gp")
+game = NodePath("../..")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI Layer" unique_id=2037058904]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_3gm7n")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI Layer/MarginContainer" unique_id=2052230800]
+custom_maximum_size = Vector2(-1, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="Timer" parent="UI Layer/MarginContainer/HBoxContainer" unique_id=649885082 node_paths=PackedStringArray("progress_bar") instance=ExtResource("7_xtdty")]
+custom_minimum_size = Vector2(50, 25)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+theme = ExtResource("8_stwo3")
+text = "30"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+progress_bar = NodePath("../ProgressBar")
+
+[node name="ProgressBar" parent="UI Layer/MarginContainer/HBoxContainer" unique_id=671674136 instance=ExtResource("14_8ssvi")]
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-20, -14)
+offset_transform_scale = Vector2(0.2, 0.2)
+
+[node name="Money" type="RichTextLabel" parent="UI Layer/MarginContainer" unique_id=887263959]
+modulate = Color(0.9098039, 0.74509805, 0, 1)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_pivot = Vector2(50, -25)
+theme = ExtResource("8_stwo3")
+text = "$0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+
+[node name="Score" type="RichTextLabel" parent="UI Layer/MarginContainer" unique_id=1542508186]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+offset_transform_enabled = true
+theme = ExtResource("8_stwo3")
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+script = ExtResource("2_q6kid")
+
+[node name="Shop" parent="UI Layer" unique_id=429705958 node_paths=PackedStringArray("game") instance=ExtResource("10_fws3a")]
+visible = false
+custom_minimum_size = Vector2(350, -1)
+custom_maximum_size = Vector2(350, -1)
+size_flags_horizontal = 1
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_position = Vector2(350, 0)
+initial_upgrades = Array[ExtResource("17_acwcx")]([ExtResource("18_n2pfc"), ExtResource("19_n2pfc"), ExtResource("19_3gm7n"), ExtResource("20_8ssvi")])
+game = NodePath("../..")
+
+[connection signal="money_set" from="." to="UI Layer" method="_on_game_money_set"]
+[connection signal="score_set" from="." to="UI Layer/MarginContainer/Score" method="_on_game_score_set"]
+[connection signal="timeout" from="Going Crazy Timer" to="PlaySpace" method="_on_going_crazy_timer_timeout"]
+[connection signal="timeout" from="Going Crazy Timer" to="Camera2D/Background" method="_on_game_go_crazy"]
+[connection signal="timeout" from="Going Crazy Timer" to="UI Layer/MarginContainer/HBoxContainer/ProgressBar" method="_on_going_crazy_timer_timeout"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="graze" from="Player" to="." method="_on_player_graze"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="mouse_entered" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_exited"]
+[connection signal="pressed" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_pressed"]

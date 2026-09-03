@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bcx16oy0f484e"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_x8fap"]
+[ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="2_qban0"]
+
+[sub_resource type="Curve" id="Curve_x8fap"]
+_limits = [1.0, 150000.0, 1.0, 4.0]
+_data = [Vector2(1, 3000), 0.0, 0.0, 0, 0, Vector2(2.008, 12000), 0.0, 0.0, 0, 0, Vector2(3, 36842.367), 0.0, 0.0, 0, 0, Vector2(4, 78947.83), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("2_qban0")
+cost_curve = SubResource("Curve_x8fap")
+max_upgrades = 3
+title = "+ 1 Rhombus Bullet"
+description = "Fund his bullet addiction."
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

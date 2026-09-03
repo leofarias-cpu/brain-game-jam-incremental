@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://tcq3q6p7p52"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_mwhv7"]
+[ext_resource type="Script" uid="uid://ccj8rpaw4t06t" path="res://systems/upgrade/upgrades/more_speed/more_speed.gd" id="2_mwhv7"]
+
+[sub_resource type="Curve" id="Curve_iartc"]
+_limits = [1.0, 30000.0, 1.0, 2.0]
+_data = [Vector2(1, 3000), 0.0, 0.0, 0, 0, Vector2(2, 30000), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("2_mwhv7")
+cost_curve = SubResource("Curve_iartc")
+title = "Go faster"
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" format=3 uid="uid://dt0wpt0qb18or"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_7guq3"]
+[ext_resource type="Script" uid="uid://cn5rcsoayjpum" path="res://systems/upgrade/upgrades/evil_grazing/evil_grazing.gd" id="2_7guq3"]
+
+[sub_resource type="Curve" id="Curve_defy1"]
+_limits = [5000.0, 10000.0, 1.0, 2.0]
+_data = [Vector2(1, 5000), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[resource]
+script = ExtResource("2_7guq3")
+cost_curve = SubResource("Curve_defy1")
+title = "Convince the King to help"
+description = "He'll graze bullets with dignity."
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

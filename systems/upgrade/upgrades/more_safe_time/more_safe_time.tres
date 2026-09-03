@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://dos0m0u37ltro"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_eoh6r"]
+[ext_resource type="Script" uid="uid://cd60x43gsra5x" path="res://systems/upgrade/upgrades/more_safe_time/more_safe_time.gd" id="2_eoh6r"]
+
+[sub_resource type="Curve" id="Curve_ifgap"]
+_limits = [1.0, 100000.0, 1.0, 3.0]
+_data = [Vector2(1, 800), 0.0, 0.0, 0, 0, Vector2(2, 12000), 0.0, 0.0, 0, 0, Vector2(3, 50000), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("2_eoh6r")
+cost_curve = SubResource("Curve_ifgap")
+max_upgrades = 3
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

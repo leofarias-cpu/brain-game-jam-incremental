@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://dl22it6d35hqk" path="res://systems/upgrade/upgrades/evil_ball/evil_ball.gd" id="2_er4h5"]
 
 [sub_resource type="Curve" id="Curve_xq8q5"]
-_limits = [0.0, 1.0, 1.0, 2.0]
-_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+_limits = [0.0, 500.0, 1.0, 2.0]
+_data = [Vector2(1, 200), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [resource]
 script = ExtResource("2_er4h5")
 cost_curve = SubResource("Curve_xq8q5")
-title = "Call the King of Balls"
-description = "Bigger, meaner, faster and worth a lot more."
+title = "Sacrifice a Ball"
+description = "Calls the King of Balls."
 flavor_text = "While his big size and luxurious color may set him apart from other Balls, what actually earned him the royal title was his ability to turn bussiness insights into actionable points and shareholder value. He's actually more of a manager."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

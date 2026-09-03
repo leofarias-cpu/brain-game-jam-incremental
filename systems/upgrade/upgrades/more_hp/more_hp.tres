@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://ela37ktpbp3y" path="res://systems/upgrade/upgrades/more_hp/more_hp.gd" id="2_55rex"]
 
 [sub_resource type="Curve" id="Curve_1du47"]
-_limits = [0.0, 1000.0, 1.0, 2.0]
-_data = [Vector2(1, 700), 0.0, 0.0, 0, 0]
-point_count = 1
+_limits = [1.0, 10000.0, 1.0, 3.0]
+_data = [Vector2(1, 700), 0.0, 6546.9775, 0, 0, Vector2(2.9767442, 10000), 6583.07, 0.0, 0, 0]
+point_count = 2
 
 [resource]
 script = ExtResource("2_55rex")

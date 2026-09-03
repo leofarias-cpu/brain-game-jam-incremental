@@ -30,6 +30,8 @@ arrow_guy = NodePath("ArrowGuy")
 hand = NodePath("Hand")
 
 [node name="ArrowGuy" type="CharacterBody2D" parent="." unique_id=1947604422 node_paths=PackedStringArray("bullet_spawn_point", "hand")]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_fpx42")
 bullet_scene = ExtResource("2_0au16")
 bullet_spawn_point = NodePath("../Hand/BulletSpawnPoint")

@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(stats.get_speed() * facing_direction * delta)
+	var collision = move_and_collide(stats.get_speed() * facing_direction * speed_multiplier * delta)
 	if collision:
 		var reflect = collision.get_remainder().bounce(collision.get_normal())
 		# + random to avoid a ball bouncing perfectly in a straight line
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 
 func go_crazy():
 	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(self.stats, "speed", stats.get_speed() * 1.5, 0.5)
+	tween.tween_property(self, "speed_multiplier", 1.5, 0.5)
 	tween.tween_property(self, "modulate", Color.FIREBRICK, 0.5)
 
 func get_graze_value() -> int:
@@ -29,7 +29,11 @@ func get_graze_value() -> int:
 
 func reset():
 	await get_tree().create_timer(1).timeout
+	var tween = get_tree().create_tween().set_parallel()
+	
+	tween.tween_property(self, "speed_multiplier", 1, 0.5)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.5)
 	facing_direction = Vector2.from_angle(deg_to_rad(randf_range(0, 360))).normalized()
-
-func set_stats(stats: BallStats):
-	self.stats = stats
+	
+func set_stats(new_stats: BallStats):
+	self.stats = new_stats

@@ -5,10 +5,8 @@
 [ext_resource type="Script" uid="uid://4jddw1rvvtvi" path="res://entities/ball/ball_stats.gd" id="3_fcqpf"]
 [ext_resource type="Script" uid="uid://f0lxmjsgx6ui" path="res://entities/arrow guy/bullet/bullet_stats.gd" id="4_3gm7n"]
 [ext_resource type="PackedScene" uid="uid://cuovppwi20kvk" path="res://entities/ball/ball.tscn" id="4_fcqpf"]
-[ext_resource type="PackedScene" uid="uid://lakuupc3ybdi" path="res://entities/ball/evil/EvilBall.tscn" id="4_vn1kl"]
 [ext_resource type="PackedScene" uid="uid://budtopphq6vwo" path="res://entities/player/player.tscn" id="5_2ub4j"]
 [ext_resource type="Script" uid="uid://c5jcr48ke1ckg" path="res://systems/game/background.gd" id="6_2ub4j"]
-[ext_resource type="PackedScene" uid="uid://xrywkkfs13" path="res://entities/arrow guy/shooter.tscn" id="6_3gm7n"]
 [ext_resource type="PackedScene" uid="uid://cejcjsd3sgueb" path="res://entities/play space/PlaySpace.tscn" id="6_q6kid"]
 [ext_resource type="Script" uid="uid://cywl8bvl3tnr0" path="res://ui/ui.gd" id="7_7o6gp"]
 [ext_resource type="Script" uid="uid://bblpm1hk8wrtx" path="res://entities/arrow guy/shooter_stats.gd" id="7_8ssvi"]
@@ -21,9 +19,9 @@
 [ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="11_danal"]
 [ext_resource type="PackedScene" uid="uid://cdbi5j1lx0ri" path="res://ui/timer/progress_bar.tscn" id="14_8ssvi"]
 [ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="17_acwcx"]
-[ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/add_ball/add_ball.tres" id="18_n2pfc"]
-[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/faster_balls/faster_balls.tres" id="19_3gm7n"]
-[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/more_ball_money/more_ball_money.tres" id="19_n2pfc"]
+[ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/ball_add/add_ball.tres" id="18_n2pfc"]
+[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/balls_faster/faster_balls.tres" id="19_3gm7n"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/ball_more_money/more_ball_money.tres" id="19_n2pfc"]
 [ext_resource type="Resource" uid="uid://ckd4xp572i1ba" path="res://systems/upgrade/upgrades/bigger_play_area/bigger_play_area.tres" id="20_8ssvi"]
 
 [sub_resource type="Resource" id="Resource_sc4om"]
@@ -34,7 +32,7 @@ metadata/_custom_type_script = "uid://4jddw1rvvtvi"
 
 [sub_resource type="Resource" id="Resource_8ssvi"]
 script = ExtResource("4_3gm7n")
-graze = 5
+graze = 20
 speed = 40.0
 metadata/_custom_type_script = "uid://f0lxmjsgx6ui"
 
@@ -122,10 +120,10 @@ RichTextLabel/fonts/normal_font = ExtResource("10_s2ak1")
 script = ExtResource("1_tsptn")
 player = NodePath("Player")
 play_space = NodePath("PlaySpace")
-play_space_height = 200
-play_space_width = 200
+play_space_height = 100
+play_space_width = 100
 play_space_border_width = 6
-enemies = Array[PackedScene]([ExtResource("4_fcqpf"), ExtResource("4_fcqpf"), ExtResource("6_3gm7n"), ExtResource("4_vn1kl")])
+enemies = Array[PackedScene]([ExtResource("4_fcqpf"), ExtResource("4_fcqpf")])
 going_crazy_timer = NodePath("Going Crazy Timer")
 round_end_position = NodePath("RoundEndPosition")
 round_start_position = NodePath("RoundStartPosition")

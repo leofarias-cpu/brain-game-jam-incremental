@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8jd8v5aujsw3" path="res://entities/ball/evil/evil_ball.gd" id="1_3ldho"]
 [ext_resource type="Script" uid="uid://b3rik67xq5m22" path="res://entities/ball/ball_hittbox.gd" id="2_bk7bf"]
 [ext_resource type="Texture2D" uid="uid://csygqc3rkwmxh" path="res://assets/Shape Characters/Vector/overview.svg" id="3_vtvr8"]
+[ext_resource type="Script" uid="uid://jdxrqy50oq6p" path="res://entities/ball/graze_area.gd" id="4_bk7bf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5d6p"]
 radius = 7.0
@@ -10,11 +11,15 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyx3h"]
 radius = 7.5
 
-[node name="EvilBall" type="CharacterBody2D" unique_id=198783946 node_paths=PackedStringArray("hitbox", "physics_collision", "hitbox_collision") groups=["enemies"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtvr8"]
+radius = 23.0
+
+[node name="EvilBall" type="CharacterBody2D" unique_id=198783946 node_paths=PackedStringArray("graze_area", "hitbox", "physics_collision", "hitbox_collision") groups=["enemies"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_3ldho")
+graze_area = NodePath("Graze area")
 hitbox = NodePath("Hittbox")
 physics_collision = NodePath("PhysicsCollision")
 hitbox_collision = NodePath("Hittbox/CollisionShape2D")
@@ -38,3 +43,16 @@ scale = Vector2(-0.2, 0.2)
 texture = ExtResource("3_vtvr8")
 region_enabled = true
 region_rect = Rect2(498.58038, 39.68904, 82, 81)
+
+[node name="Graze area" type="Area2D" parent="." unique_id=263373355 node_paths=PackedStringArray("collision")]
+collision_mask = 2
+monitoring = false
+script = ExtResource("4_bk7bf")
+collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graze area" unique_id=1832707647]
+shape = SubResource("CircleShape2D_vtvr8")
+debug_color = Color(0.4875322, 0.877868, 0.63034904, 0.41960785)
+
+[connection signal="area_entered" from="Graze area" to="." method="_on_graze_area_area_entered"]
+[connection signal="area_entered" from="Graze area" to="Graze area" method="_on_area_entered"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://0wr7yvjntel6"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_6cjl6"]
-[ext_resource type="Script" uid="uid://b4r0xb1ap4pld" path="res://systems/upgrade/upgrades/faster_balls/faster_balls.gd" id="1_uiqtv"]
+[ext_resource type="Script" uid="uid://b4r0xb1ap4pld" path="res://systems/upgrade/upgrades/balls_faster/faster_balls.gd" id="1_uiqtv"]
 
 [sub_resource type="Curve" id="Curve_hoijo"]
 _limits = [1.0, 10000.0, 1.0, 5.0]

@@ -37,6 +37,7 @@ func shoot():
 		bullet.stats = stats.bullet_stats
 		bullet.visible = true
 		bullet.disabled = false
+		bullet.direction = direction_x
 		
 		flying_bullets.push_back(bullet)
 		var tween = get_tree().create_tween()
@@ -47,8 +48,11 @@ func shoot():
 	
 func add_bullet():
 	var bullet: Bullet = bullet_scene.instantiate()
+	
+	bullet.stats = stats.bullet_stats
 	bullet.visible = false
 	bullet.disabled = true
+	
 	free_bullets.push_back(bullet)
 	get_parent().add_child.call_deferred(bullet)
 	bullet.hit.connect(reset_bullet)
@@ -59,9 +63,9 @@ func reset():
 		for i in diff:
 			add_bullet()
 	
-	velocity.y = stats.speed
-	
+	velocity.y = stats.speed * randf_range(0.5, 2)
 	await get_tree().create_timer(0.5).timeout
+	velocity.y = stats.speed
 	shoot()
 
 func reset_bullet(bullet: Bullet):

@@ -4,8 +4,8 @@
 [ext_resource type="Theme" uid="uid://dj1j8finhedt" path="res://ui/theme.tres" id="1_eil5d"]
 [ext_resource type="Script" uid="uid://rnb2ricfggik" path="res://ui/shop/shop.gd" id="2_eil5d"]
 [ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="3_hoijo"]
-[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/more_ball_money/more_ball_money.tres" id="4_abbq3"]
-[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/faster_balls/faster_balls.tres" id="5_xc065"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/ball_more_money/more_ball_money.tres" id="4_abbq3"]
+[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/balls_faster/faster_balls.tres" id="5_xc065"]
 
 [node name="Shop" type="Panel" unique_id=429705958 node_paths=PackedStringArray("upgrades_container")]
 custom_minimum_size = Vector2(350, 0)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" format=3 uid="uid://blyfgfsmywy3q"]
+
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_rqrem"]
+[ext_resource type="Script" uid="uid://f80klet2webf" path="res://systems/upgrade/upgrades/shooter_more_score/shooter_more_score.gd" id="2_rqrem"]
+
+[sub_resource type="Curve" id="Curve_3jntb"]
+_limits = [1.0, 100000.0, 1.0, 100.0]
+_data = [Vector2(1, 1000), 0.0, 0.0, 0, 0, Vector2(55.488373, 31579.633), 1142.9977, 1142.9977, 0, 0, Vector2(100, 100000), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("2_rqrem")
+cost_curve = SubResource("Curve_3jntb")
+max_upgrades = 100
+title = "+2 bullet score"
+description = "Yeah"
+metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

@@ -34,7 +34,6 @@ var next_shooter_direction = 1
 var money: int = 0:
 	set(v):
 		money = v
-		print(money)
 		money_set.emit(v)
 
 var score := 0:
@@ -44,6 +43,7 @@ var score := 0:
 
 signal money_set(value: int)
 signal score_set(value: int)
+signal play_space_size_changed(space: PlaySpace)
 
 func _ready() -> void:
 	set_play_space_size(play_space_height, play_space_width, play_space_border_width)
@@ -75,7 +75,7 @@ func round_end() -> void:
 	await get_tree().create_timer(0.5).timeout
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
 	tween.tween_property(play_space, 'position', round_end_position.position, 0.5)
-	
+	set_evil_grazing(false)
 	ui_layer.show_shop()
 	
 func add_enemy(enemy_scene: PackedScene):
@@ -86,14 +86,16 @@ func add_enemy(enemy_scene: PackedScene):
 	
 	enemy.position = play_space.get_point_from_side(direction, 0.4)
 	
+	if enemy is EvilBall:
+		enemy.graze.connect(_on_player_graze)
 	if enemy is Ball:
 		enemy.set_stats(ball_stats)
 	elif enemy is Shooter:
 		enemy.stats = shooter_stats
 		enemy.game = self
-		enemy.lower_bound = play_space.global_position.y -play_space_height / 2 + play_space_border_width
-		enemy.upper_bound = play_space.global_position.y + play_space_height / 2 - play_space_border_width
+	
 		enemy.direction = next_shooter_direction
+		play_space_size_changed.connect(enemy.on_play_space_size_changed)
 		
 		next_shooter_direction *= -1
 		
@@ -131,15 +133,27 @@ func setup_timer() -> void:
 	ui_layer.start_timer(safe_time)
 
 func set_play_space_size(height: int, width: int, border_width: int):
+	self.play_space_height = height
+	self.play_space_width = width
+	self.play_space_border_width = border_width
+	
 	play_space.height = height
 	play_space.width = width
 	play_space.border_width = border_width
+	
+	play_space_size_changed.emit(play_space)
 	play_space.update_size()
 	
 func increase_play_space_size(height: int, width: int, border_width: int = 0):
+	self.play_space_height += height
+	self.play_space_width += width
+	self.play_space_border_width += border_width
+	
 	play_space.height += height
 	play_space.width += width
 	play_space.border_width += border_width
+	
+	play_space_size_changed.emit(play_space)
 	play_space.update_size()
 	
 	
@@ -154,3 +168,17 @@ func _on_player_graze(value: int) -> void:
 
 func add_upgrade(upgrade: Upgrade):
 	shop.add_upgrade(upgrade)
+
+func remove_ball():
+	var enemies_list =  get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies_list:
+		if enemy is Ball:
+			enemy.queue_free()
+			return 
+			
+func set_evil_grazing(v: bool):
+	var enemies_list =  get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies_list:
+		if enemy is EvilBall:
+			enemy.graze_area.monitoring = v
+			if v: enemy.grazing_enabled = true
