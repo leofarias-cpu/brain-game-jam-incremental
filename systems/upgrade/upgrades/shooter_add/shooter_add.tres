@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://c1gkakkt5gune"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_7w151"]
-[ext_resource type="Script" uid="uid://d0auvv3v152mo" path="res://systems/upgrade/upgrades/shooter_add/add_shooter.gd" id="2_pvwmp"]
+[ext_resource type="Script" uid="uid://d0auvv3v152mo" path="res://systems/upgrade/upgrades/shooter_add/shooter_add.gd" id="2_pvwmp"]
 
 [sub_resource type="Curve" id="Curve_ubcp4"]
 _limits = [1.0, 100000.0, 1.0, 4.0]

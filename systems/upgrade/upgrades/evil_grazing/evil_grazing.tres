@@ -12,5 +12,5 @@ point_count = 1
 script = ExtResource("2_7guq3")
 cost_curve = SubResource("Curve_defy1")
 title = "Convince the King to help"
-description = "He'll graze bullets with dignity."
+description = "O Rei também vai pontuar raspando bolas."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

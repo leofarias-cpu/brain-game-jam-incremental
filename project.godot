@@ -69,6 +69,10 @@ down={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/translation/translation.en.translation", "res://assets/translation/translation.pt.translation")
+
 [layer_names]
 
 2d_physics/layer_1="Player"

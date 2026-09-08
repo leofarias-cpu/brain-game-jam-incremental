@@ -9,10 +9,10 @@ class_name Shop_Row extends Button
 signal bought(upgrade: Upgrade)
 
 func _ready() -> void:
-	title.text = upgrade.title
+	title.text = tr(upgrade.resource_path.get_file().get_basename() + "_title")
 
-		
-	description.text = upgrade.description
+
+	description.text = tr(upgrade.resource_path.get_file().get_basename() + "_description")
 	cost.text = "$%s" % upgrade.get_next_upgrade_cost()
 	
 	if upgrade.icon:

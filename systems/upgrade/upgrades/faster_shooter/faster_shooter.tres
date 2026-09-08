@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://cgocwblblb08q"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_jxp3o"]
-[ext_resource type="Script" uid="uid://cb40hqhg8x8uq" path="res://systems/upgrade/upgrades/faster_shooter/faster_bullets.gd" id="2_jxp3o"]
+[ext_resource type="Script" uid="uid://cb40hqhg8x8uq" path="res://systems/upgrade/upgrades/faster_shooter/faster_shooter.gd" id="2_jxp3o"]
 
 [sub_resource type="Curve" id="Curve_p2m0o"]
 _limits = [1.0, 100000.0, 1.0, 10.0]

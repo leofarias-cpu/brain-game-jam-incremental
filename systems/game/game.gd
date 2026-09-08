@@ -46,6 +46,8 @@ signal score_set(value: int)
 signal play_space_size_changed(space: PlaySpace)
 
 func _ready() -> void:
+	TranslationServer.set_locale("pt")
+	print()
 	set_play_space_size(play_space_height, play_space_width, play_space_border_width)
 	for enemy in enemies:
 		add_enemy(enemy)

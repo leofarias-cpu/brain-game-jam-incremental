@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://t0mqqu86gh3u"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_inl48"]
-[ext_resource type="Script" uid="uid://ctjbikxx1eqep" path="res://systems/upgrade/upgrades/ball_more_money/more_ball_money.gd" id="2_fshli"]
+[ext_resource type="Script" uid="uid://ctjbikxx1eqep" path="res://systems/upgrade/upgrades/ball_more_money/ball_more_money.gd" id="2_fshli"]
 
 [sub_resource type="Curve" id="Curve_xhv5j"]
 _limits = [1.0, 1000000.0, 1.0, 200.0]

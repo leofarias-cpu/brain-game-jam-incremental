@@ -65,6 +65,6 @@ Button/styles/normal = SubResource("StyleBoxFlat_s6nha")
 Button/styles/pressed = SubResource("StyleBoxFlat_rqugq")
 Panel/styles/panel = SubResource("StyleBoxFlat_8grp2")
 RichTextLabel/colors/font_outline_color = Color(0.01813333, 0.015999999, 0.08, 1)
-RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/outline_size = 0
 RichTextLabel/fonts/italics_font = ExtResource("2_jf26r")
 RichTextLabel/fonts/normal_font = ExtResource("1_rqugq")

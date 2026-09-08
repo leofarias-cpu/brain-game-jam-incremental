@@ -19,9 +19,9 @@
 [ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="11_danal"]
 [ext_resource type="PackedScene" uid="uid://cdbi5j1lx0ri" path="res://ui/timer/progress_bar.tscn" id="14_8ssvi"]
 [ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="17_acwcx"]
-[ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/ball_add/add_ball.tres" id="18_n2pfc"]
-[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/balls_faster/faster_balls.tres" id="19_3gm7n"]
-[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/ball_more_money/more_ball_money.tres" id="19_n2pfc"]
+[ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/ball_add/ball_add.tres" id="18_n2pfc"]
+[ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/balls_faster/balls_faster.tres" id="19_3gm7n"]
+[ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/ball_more_money/ball_more_money.tres" id="19_n2pfc"]
 [ext_resource type="Resource" uid="uid://ckd4xp572i1ba" path="res://systems/upgrade/upgrades/bigger_play_area/bigger_play_area.tres" id="20_8ssvi"]
 
 [sub_resource type="Resource" id="Resource_sc4om"]
