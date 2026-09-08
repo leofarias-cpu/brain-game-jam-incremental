@@ -6,7 +6,7 @@ extends EditorScript
 
 func _run() -> void:
 	var output_file = FileAccess.open("res://assets/translation/translation.csv", FileAccess.WRITE)
-	var file := FileAccess.open("res://assets/translation/Incremental Game Upgrades - Página1(1).csv", FileAccess.READ)
+	var file := FileAccess.open("res://assets/translation/Incremental Game Upgrades - Página1.csv", FileAccess.READ)
 	if file == null:
 		push_error("GG Errou o arquivo de CSV ou deu outro problema foda: %s" % FileAccess.get_open_error())
 		return

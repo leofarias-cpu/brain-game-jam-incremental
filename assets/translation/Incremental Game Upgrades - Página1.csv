@@ -2,16 +2,16 @@ Implemented?,Upgrade,Title,Título,Description,Descrição,Tooltip
 FALSE,ball_add, +1 Ball, +1 Bola,More balls is more better.,Mais Bolas é mais melhor.,"Balls are really motivated to kill you, but they lack a clear sense of direction in life. Currently adding +X balls."
 FALSE,balls_faster,Faster Balls,Bolas Rápidas,"1.5x more points, but +10 ball speed.","1.5x mais pontos, mas são mais rápidos.",Currently adding +X Speed and +Y Multiplier
 FALSE,evil_ball,Sacrifice a Ball,Sacrifique uma Bola,Calls the King of Balls.,Convoca o Rei das Bolas.,"While his big size and luxurious color may set him apart from other Balls, what actually earned him the royal title was his ability to turn bussiness insights into actionable points and shareholder value. He's actually more of a manager."
-FALSE,evil_grazing,,Convince the King to help,He'll graze bullets with dignity.,O Rei também vai pontuar raspando bolas.,
-FALSE,more_ball_money,More Ball Score,Bolas pontudas, +1 score on Ball graze.,Porque dão mais pontos. +1 ponto na raspada.,
+FALSE,evil_grazing,Convince the King to help,Suplique pela ajuda do Rei,He'll graze bullets with dignity.,O Rei também vai pontuar raspando bolas.,
+FALSE,ball_more_money,More Ball Score,Bolas pontudas, +1 score on Ball graze.,Porque dão mais pontos. +1 ponto na raspada.,
 FALSE,,,,,,
 FALSE,bigger_play_area,Bigger Box,Caixa Maior,Relax your balls.,Sua bolas vão relaxar mais.,Bad news: You're in hell. Good news: Land is really cheap.
 FALSE,more_safe_time,More time,Mais tempo,Until They Get Grazy.,Até Eles Ficarem Doidos.,Your lavish display of wealth humbles and distracts your enemies for longer.
 FALSE,more_hp, +1 HP, +1 HP,Play stupider!,Jogue Pior e não sofra as consequências!,
 FALSE,more_speed,Go faster,Fique mais rapido,Outrun the balls.,Corra mais que as bolas.,
 FALSE,,,,,,
-FALSE,faster_shooter,Faster bullets,Balas +Rápidas,"1.5x more points, but +10 bullet speed.","1.5 mais pontos, mas são mais rápidos.",
-FALSE,add_shooter, +1 Rhombus, +1 Losango,👉,👉,
+FALSE,shooter_faster,Faster bullets,Balas +Rápidas,"1.5x more points, but +10 bullet speed.","1.5 mais pontos, mas são mais rápidos.",
+FALSE,shooter_add, +1 Rhombus, +1 Losango,👉,👉,
 FALSE,shooter_more_bullets, +1 Rhombus Bullet, +1 Bala pro Losango,Fund their bullet addiction.,Alimente o vício de balas deles.,
 FALSE,shooter_more_score, +2 bullet score, +2 Pontos na Bala,Yeah,É,
 FALSE,,,,,,

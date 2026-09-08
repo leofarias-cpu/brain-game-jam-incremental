@@ -46,8 +46,8 @@ signal score_set(value: int)
 signal play_space_size_changed(space: PlaySpace)
 
 func _ready() -> void:
-	TranslationServer.set_locale("pt")
-	print()
+
+	
 	set_play_space_size(play_space_height, play_space_width, play_space_border_width)
 	for enemy in enemies:
 		add_enemy(enemy)
@@ -184,3 +184,11 @@ func set_evil_grazing(v: bool):
 		if enemy is EvilBall:
 			enemy.graze_area.monitoring = v
 			if v: enemy.grazing_enabled = true
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		if TranslationServer.get_locale() == 'en':
+			TranslationServer.set_locale("pt")
+		else:
+			TranslationServer.set_locale("en")
+		

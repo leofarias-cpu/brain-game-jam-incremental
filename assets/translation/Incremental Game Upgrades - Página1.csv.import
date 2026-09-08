@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cdg2glogl81l8"
+
+[deps]
+
+files=["res://assets/translation/Incremental Game Upgrades - Página1.Upgrade.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Title.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Título.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Description.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Descrição.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Tooltip.translation"]
+
+source_file="res://assets/translation/Incremental Game Upgrades - Página1.csv"
+dest_files=["res://assets/translation/Incremental Game Upgrades - Página1.Upgrade.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Title.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Título.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Description.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Descrição.translation", "res://assets/translation/Incremental Game Upgrades - Página1.Tooltip.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -8,15 +8,23 @@ class_name Shop_Row extends Button
 
 signal bought(upgrade: Upgrade)
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED:
+		translate_text()
+
 func _ready() -> void:
-	title.text = tr(upgrade.resource_path.get_file().get_basename() + "_title")
+	print(upgrade.resource_path.get_file().get_basename() + "_title")
 
-
-	description.text = tr(upgrade.resource_path.get_file().get_basename() + "_description")
+	cost.text = "$%s" % upgrade.get_next_upgrade_cost()
 	cost.text = "$%s" % upgrade.get_next_upgrade_cost()
 	
 	if upgrade.icon:
 		icon2.texture = upgrade.icon
+
+func translate_text():
+	title.text = tr(upgrade.resource_path.get_file().get_basename() + "_title")
+	description.text = tr(upgrade.resource_path.get_file().get_basename() + "_description")
+
 
 
 func _on_mouse_entered() -> void:

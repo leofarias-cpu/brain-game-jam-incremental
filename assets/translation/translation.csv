@@ -5,6 +5,8 @@ balls_faster_title,Faster Balls,Bolas Rápidas
 balls_faster_description,"1.5x more points, but +10 ball speed.","1.5x mais pontos, mas são mais rápidos."
 evil_ball_title,Sacrifice a Ball,Sacrifique uma Bola
 evil_ball_description,Calls the King of Balls.,Convoca o Rei das Bolas.
+evil_grazing_title,Convince the King to help,Suplique pela ajuda do Rei
+evil_grazing_description,He'll graze bullets with dignity.,O Rei também vai pontuar raspando bolas.
 ball_more_money_title,More Ball Score,Bolas pontudas
 ball_more_money_description, +1 score on Ball graze.,Porque dão mais pontos. +1 ponto na raspada.
 bigger_play_area_title,Bigger Box,Caixa Maior
@@ -15,10 +17,10 @@ more_hp_title, +1 HP, +1 HP
 more_hp_description,Play stupider!,Jogue Pior e não sofra as consequências!
 more_speed_title,Go faster,Fique mais rapido
 more_speed_description,Outrun the balls.,Corra mais que as bolas.
-faster_shooter_title,Faster bullets,Balas +Rápidas
-faster_shooter_description,"1.5x more points, but +10 bullet speed.","1.5 mais pontos, mas são mais rápidos."
-add_shooter_title, +1 Rhombus, +1 Losango
-add_shooter_description,👉,👉
+shooter_faster_title,Faster bullets,Balas +Rápidas
+shooter_faster_description,"1.5x more points, but +10 bullet speed.","1.5 mais pontos, mas são mais rápidos."
+shooter_add_title, +1 Rhombus, +1 Losango
+shooter_add_description,👉,👉
 shooter_more_bullets_title, +1 Rhombus Bullet, +1 Bala pro Losango
 shooter_more_bullets_description,Fund their bullet addiction.,Alimente o vício de balas deles.
 shooter_more_score_title, +2 bullet score, +2 Pontos na Bala
