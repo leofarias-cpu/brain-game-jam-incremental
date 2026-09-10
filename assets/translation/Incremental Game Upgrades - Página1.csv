@@ -1,5 +1,5 @@
 Implemented?,Upgrade,Title,Título,Description,Descrição,Tooltip
-FALSE,ball_add, +1 Ball, +1 Bola,More balls is more better.,Mais Bolas é mais melhor.,"Balls are really motivated to kill you, but they lack a clear sense of direction in life. Currently adding +X balls."
+FALSE,ball_add, +1 Ball and +1 ball score, +1 Bola e +1 ponto raspando,More balls with more points is more better.,Mais Bolas com mais pontos é mais melhor.,"Balls are really motivated to kill you, but they lack a clear sense of direction in life. Currently adding +X balls."
 FALSE,balls_faster,Faster Balls,Bolas Rápidas,"1.5x more points, but +10 ball speed.","1.5x mais pontos, mas são mais rápidos.",Currently adding +X Speed and +Y Multiplier
 FALSE,evil_ball,Sacrifice a Ball,Sacrifique uma Bola,Calls the King of Balls.,Convoca o Rei das Bolas.,"While his big size and luxurious color may set him apart from other Balls, what actually earned him the royal title was his ability to turn bussiness insights into actionable points and shareholder value. He's actually more of a manager."
 FALSE,evil_grazing,Convince the King to help,Suplique pela ajuda do Rei,He'll graze bullets with dignity.,O Rei também vai pontuar raspando bolas.,

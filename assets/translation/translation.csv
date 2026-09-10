@@ -1,6 +1,6 @@
 keys,en,pt
-ball_add_title, +1 Ball, +1 Bola
-ball_add_description,More balls is more better.,Mais Bolas é mais melhor.
+ball_add_title, +1 Ball and +1 ball score, +1 Bola e +1 ponto raspando
+ball_add_description,More balls with more points is more better.,Mais Bolas com mais pontos é mais melhor.
 balls_faster_title,Faster Balls,Bolas Rápidas
 balls_faster_description,"1.5x more points, but +10 ball speed.","1.5x mais pontos, mas são mais rápidos."
 evil_ball_title,Sacrifice a Ball,Sacrifique uma Bola
