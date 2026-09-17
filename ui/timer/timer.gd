@@ -3,6 +3,7 @@ class_name TimerLabel extends RichTextLabel
 @export var timer: Timer
 var duration: int
 @export var progress_bar: TextureProgressBar
+@export var effect_label: RichTextLabel
 
 
 func start(time: float):
@@ -25,3 +26,14 @@ func _on_timer_timeout() -> void:
 	
 func stop():
 	timer.stop()
+
+func play_timeout_effect(value: int):
+	effect_label.text = "+ %s!!!!" % value
+	effect_label.visible = true
+	
+	var tween = get_tree().create_tween()
+	var position = tween.tween_property(effect_label, "offset_transform_position", Vector2(10, 40), 0.5)
+	await position.finished
+	
+	effect_label.visible = false
+	effect_label.offset_transform_position = Vector2.ZERO

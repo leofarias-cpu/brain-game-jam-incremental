@@ -19,6 +19,7 @@
 [ext_resource type="FontFile" uid="uid://d1gtmh52vs017" path="res://assets/grimoire of death/TrueType (.ttf)/GrimoireOfDeath-Italic.ttf" id="11_danal"]
 [ext_resource type="PackedScene" uid="uid://cdbi5j1lx0ri" path="res://ui/timer/progress_bar.tscn" id="14_8ssvi"]
 [ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="17_acwcx"]
+[ext_resource type="Script" uid="uid://dv8c8s04e02y2" path="res://ui/healthbar.gd" id="18_3mt0c"]
 [ext_resource type="Resource" uid="uid://c6ydmvxvh068d" path="res://systems/upgrade/upgrades/ball_add/ball_add.tres" id="18_n2pfc"]
 [ext_resource type="Resource" uid="uid://0wr7yvjntel6" path="res://systems/upgrade/upgrades/balls_faster/balls_faster.tres" id="19_3gm7n"]
 [ext_resource type="Resource" uid="uid://t0mqqu86gh3u" path="res://systems/upgrade/upgrades/ball_more_money/ball_more_money.tres" id="19_n2pfc"]
@@ -106,6 +107,18 @@ corner_radius_top_left = 40
 corner_radius_bottom_left = 40
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s6u0"]
+bg_color = Color(0.65811384, 0.329076, 2.8878452e-07, 0.14509805)
+corner_radius_top_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mt0c"]
+bg_color = Color(0.99439996, 0.30235603, 0.5346376, 1)
+corner_radius_top_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
 [sub_resource type="Theme" id="Theme_3gm7n"]
 Button/fonts/font = ExtResource("10_s2ak1")
 Button/styles/hover = SubResource("StyleBoxFlat_wehse")
@@ -113,6 +126,8 @@ Button/styles/normal = SubResource("StyleBoxFlat_fyufp")
 Button/styles/pressed = SubResource("StyleBoxFlat_acwcx")
 HSeparator/styles/separator = SubResource("StyleBoxLine_ivg0e")
 Panel/styles/panel = SubResource("StyleBoxFlat_n2pfc")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_5s6u0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_3mt0c")
 RichTextLabel/fonts/italics_font = ExtResource("11_danal")
 RichTextLabel/fonts/normal_font = ExtResource("10_s2ak1")
 
@@ -159,7 +174,7 @@ scale = Vector2(10.015625, 5.633789)
 texture = SubResource("GradientTexture2D_tga20")
 script = ExtResource("6_2ub4j")
 
-[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("money", "round_end_position", "shop", "timer", "timer_progress_bar", "round_start_button", "score")]
+[node name="UI Layer" type="CanvasLayer" parent="." unique_id=1395375313 node_paths=PackedStringArray("money", "round_end_position", "shop", "timer", "timer_progress_bar", "round_start_button", "score", "hp_bar")]
 process_mode = 3
 script = ExtResource("7_7o6gp")
 money = NodePath("MarginContainer/Money")
@@ -169,6 +184,7 @@ timer = NodePath("MarginContainer/HBoxContainer/Timer")
 timer_progress_bar = NodePath("MarginContainer/HBoxContainer/ProgressBar")
 round_start_button = NodePath("Round Start")
 score = NodePath("MarginContainer/Score")
+hp_bar = NodePath("MarginContainer/MarginContainer/HeatlhBar")
 
 [node name="Round Start" type="Button" parent="UI Layer" unique_id=1109474704 node_paths=PackedStringArray("game")]
 visible = false
@@ -205,7 +221,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="Timer" parent="UI Layer/MarginContainer/HBoxContainer" unique_id=649885082 node_paths=PackedStringArray("progress_bar") instance=ExtResource("7_xtdty")]
+[node name="Timer" parent="UI Layer/MarginContainer/HBoxContainer" unique_id=649885082 node_paths=PackedStringArray("progress_bar", "effect_label") instance=ExtResource("7_xtdty")]
 custom_minimum_size = Vector2(50, 25)
 clip_contents = false
 layout_mode = 2
@@ -220,6 +236,15 @@ autowrap_mode = 0
 horizontal_alignment = 2
 vertical_alignment = 1
 progress_bar = NodePath("../ProgressBar")
+effect_label = NodePath("EffectLabel")
+
+[node name="EffectLabel" type="RichTextLabel" parent="UI Layer/MarginContainer/HBoxContainer/Timer" unique_id=955285399]
+visible = false
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 40.0
+offset_transform_enabled = true
+text = "+ 10!!"
 
 [node name="ProgressBar" parent="UI Layer/MarginContainer/HBoxContainer" unique_id=671674136 instance=ExtResource("14_8ssvi")]
 custom_maximum_size = Vector2(50, 50)
@@ -259,6 +284,24 @@ autowrap_mode = 0
 vertical_alignment = 1
 script = ExtResource("2_q6kid")
 
+[node name="MarginContainer" type="MarginContainer" parent="UI Layer/MarginContainer" unique_id=847969633]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="HeatlhBar" type="ProgressBar" parent="UI Layer/MarginContainer/MarginContainer" unique_id=1860181324 node_paths=PackedStringArray("game")]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+mouse_filter = 2
+max_value = 2.0
+step = 0.1
+value = 1.0
+show_percentage = false
+script = ExtResource("18_3mt0c")
+game = NodePath("../../../..")
+
 [node name="Shop" parent="UI Layer" unique_id=429705958 node_paths=PackedStringArray("game") instance=ExtResource("10_fws3a")]
 visible = false
 custom_minimum_size = Vector2(350, -1)
@@ -268,16 +311,20 @@ size_flags_vertical = 3
 offset_transform_enabled = true
 offset_transform_position = Vector2(350, 0)
 initial_upgrades = Array[ExtResource("17_acwcx")]([ExtResource("18_n2pfc"), ExtResource("19_n2pfc"), ExtResource("19_3gm7n"), ExtResource("20_8ssvi")])
+upgrades = null
 game = NodePath("../..")
 
+[connection signal="hp_max_changed" from="." to="UI Layer/MarginContainer/MarginContainer/HeatlhBar" method="_on_game_hp_max_changed"]
 [connection signal="money_set" from="." to="UI Layer" method="_on_game_money_set"]
 [connection signal="score_set" from="." to="UI Layer/MarginContainer/Score" method="_on_game_score_set"]
+[connection signal="timeout" from="Going Crazy Timer" to="." method="_on_going_crazy_timer_timeout"]
 [connection signal="timeout" from="Going Crazy Timer" to="PlaySpace" method="_on_going_crazy_timer_timeout"]
 [connection signal="timeout" from="Going Crazy Timer" to="Camera2D/Background" method="_on_game_go_crazy"]
 [connection signal="timeout" from="Going Crazy Timer" to="UI Layer/MarginContainer/HBoxContainer/ProgressBar" method="_on_going_crazy_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="graze" from="Player" to="." method="_on_player_graze"]
-[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="hp_changed" from="Player" to="UI Layer/MarginContainer/MarginContainer/HeatlhBar" method="_on_player_hp_changed"]
 [connection signal="mouse_entered" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_mouse_exited"]
 [connection signal="pressed" from="UI Layer/Round Start" to="UI Layer/Round Start" method="_on_pressed"]
+[connection signal="value_changed" from="UI Layer/MarginContainer/MarginContainer/HeatlhBar" to="UI Layer/MarginContainer/MarginContainer/HeatlhBar" method="_on_value_changed"]

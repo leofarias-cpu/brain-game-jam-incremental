@@ -6,6 +6,8 @@ class_name Shop_Row extends Button
 @export var description: RichTextLabel
 @export var icon2: TextureRect
 
+@export var h_box_container: HBoxContainer
+
 signal bought(upgrade: Upgrade)
 
 func _notification(what: int) -> void:
@@ -20,6 +22,8 @@ func _ready() -> void:
 	
 	if upgrade.icon:
 		icon2.texture = upgrade.icon
+	
+	clamp_text_size()
 
 func translate_text():
 	title.text = tr(upgrade.resource_path.get_file().get_basename() + "_title")
@@ -52,6 +56,8 @@ func _on_pressed() -> void:
 		move_away()
 	else:
 		cost.text = "$" + str(upgrade.get_next_upgrade_cost())
+		
+	clamp_text_size()
 	
 func disable():
 	self.disabled = true
@@ -68,3 +74,12 @@ func move_away():
 	await tweener.finished
 	visible = false
 	offset_transform_position = Vector2(0, 0)
+
+func clamp_text_size():
+	if h_box_container.size.x > 260:
+		title.add_theme_font_size_override("normal_font_size", 18)
+		cost.add_theme_font_size_override("normal_font_size", 18)
+	else:
+		title.add_theme_font_size_override("normal_font_size", 22)
+		cost.add_theme_font_size_override("normal_font_size", 22)
+		
