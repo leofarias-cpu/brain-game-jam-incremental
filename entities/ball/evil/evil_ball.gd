@@ -16,5 +16,5 @@ func reset():
 
 
 func _on_graze_area_area_entered(area: Area2D) -> void:
-	if grazing_enabled and area is Projectile:
+	if grazing_enabled and area is Grazeable:
 		graze.emit(area.get_graze_value())

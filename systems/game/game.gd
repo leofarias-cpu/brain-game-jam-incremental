@@ -14,7 +14,6 @@ class_name Game extends Node2D
 @export_group("")
 @export var enemies: Array[PackedScene]
 @export var safe_time: int = 10
-#@export var upgrades: Dictionary[PackedScene, int]
 @export var going_crazy_timer: Timer
 @export var round_end_position: Marker2D
 @export var round_start_position: Marker2D

@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve" id="Curve_x8fap"]
 _limits = [1.0, 150000.0, 1.0, 4.0]
-_data = [Vector2(1, 3000), 0.0, 0.0, 0, 0, Vector2(2.008, 12000), 0.0, 0.0, 0, 0, Vector2(3, 36842.367), 0.0, 0.0, 0, 0, Vector2(4, 78947.83), 0.0, 0.0, 0, 0]
+_data = [Vector2(1, 600), 0.0, 0.0, 0, 0, Vector2(2, 1500), 0.0, 0.0, 0, 0, Vector2(3, 12000), 0.0, 0.0, 0, 0, Vector2(4, 78947.83), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]

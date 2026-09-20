@@ -21,6 +21,7 @@ func add_upgrade(upgrade: Upgrade):
 	row.bought.connect(on_upgrade_bought)
 	
 	upgrades_container.add_child(row)
+	#row.move_away()
 	upgrades.push_back(upgrade)
 
 func disable_expensive_upgrades():

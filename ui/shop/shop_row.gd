@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	if upgrade.icon:
 		icon2.texture = upgrade.icon
+	
 
 func translate_text():
 	title.text = tr(upgrade.resource_path.get_file().get_basename() + "_title")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" format=3 uid="uid://cgocwblblb08q"]
 
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_jxp3o"]
-[ext_resource type="Script" uid="uid://cb40hqhg8x8uq" path="res://systems/upgrade/upgrades/faster_shooter/faster_shooter.gd" id="2_jxp3o"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_htqsm"]
+[ext_resource type="Script" uid="uid://cb40hqhg8x8uq" path="res://systems/upgrade/upgrades/shooter_faster/shooter_faster.gd" id="2_4703x"]
 
 [sub_resource type="Curve" id="Curve_p2m0o"]
 _limits = [1.0, 100000.0, 1.0, 10.0]
@@ -9,7 +9,7 @@ _data = [Vector2(1, 1500), 0.0, 0.0, 0, 0, Vector2(3, 20000), 2097.874, 2097.874
 point_count = 3
 
 [resource]
-script = ExtResource("2_jxp3o")
+script = ExtResource("2_4703x")
 cost_curve = SubResource("Curve_p2m0o")
 max_upgrades = 10
 title = "Faster bullets"

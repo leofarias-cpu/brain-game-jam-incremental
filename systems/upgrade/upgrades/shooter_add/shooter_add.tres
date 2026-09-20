@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve" id="Curve_ubcp4"]
 _limits = [1.0, 100000.0, 1.0, 4.0]
-_data = [Vector2(1, 500), 0.0, 0.0, 0, 0, Vector2(2, 2000), 0.0, 0.0, 0, 0, Vector2(3, 15000), 0.0, 0.0, 0, 0, Vector2(4, 60000), 0.0, 0.0, 0, 0]
+_data = [Vector2(1, 50), 0.0, 0.0, 0, 0, Vector2(2, 500), 0.0, 0.0, 0, 0, Vector2(3, 15000), 0.0, 0.0, 0, 0, Vector2(4, 60000), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]
