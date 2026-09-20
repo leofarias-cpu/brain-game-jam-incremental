@@ -8,6 +8,7 @@ class_name UI extends CanvasLayer
 
 @export var round_start_button: Button
 @export var score: RichTextLabel
+@export var hp_bar: ProgressBar
 
 func show_shop():
 	shop.visible = true
@@ -23,6 +24,7 @@ func show_shop():
 	
 	tween.tween_property(shop, 'offset_transform_position', Vector2(0, 0), 0.7)
 	
+	tween.tween_property(hp_bar, "modulate", Color.TRANSPARENT, 0.5)
 	round_start_button.visible = true
 
 func close_shop():
@@ -38,8 +40,11 @@ func close_shop():
 	
 	round_start_button.visible = false
 	
+	tween.tween_property(hp_bar, "modulate", Color.WHITE, 0.5)
+	
 	await shop_move.finished
 	shop.visible = false
+	hp_bar.visible = true
 	
 	timer_progress_bar.reset()
 	
@@ -54,3 +59,5 @@ func _on_game_money_set(value: int) -> void:
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
 	tween.tween_property(money, 'text', "$" + str(value), 1)
 	
+func play_timeout_score_effect(value: float):
+	timer.play_timeout_effect(ceilf(value))

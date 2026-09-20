@@ -2,7 +2,10 @@ class_name Game extends Node2D
 
 @export_group("Player", "player_")
 @export var player: Player
-@export var player_hp_max := 2
+@export var player_hp_max := 2:
+	set(v):
+		player_hp_max = v
+		hp_max_changed.emit(v)
 @export var player_speed := 60.0
 
 @export_group("Play Space", "play_space_")
@@ -14,6 +17,8 @@ class_name Game extends Node2D
 @export_group("")
 @export var enemies: Array[PackedScene]
 @export var safe_time: int = 10
+@export var timeout_score := 0.1
+#@export var upgrades: Dictionary[PackedScene, int]
 @export var going_crazy_timer: Timer
 @export var round_end_position: Marker2D
 @export var round_start_position: Marker2D
@@ -43,6 +48,7 @@ var score := 0:
 signal money_set(value: int)
 signal score_set(value: int)
 signal play_space_size_changed(space: PlaySpace)
+signal hp_max_changed(v: int)
 
 func _ready() -> void:
 
@@ -184,10 +190,15 @@ func set_evil_grazing(v: bool):
 			enemy.graze_area.monitoring = v
 			if v: enemy.grazing_enabled = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		if TranslationServer.get_locale() == 'en':
 			TranslationServer.set_locale("pt")
 		else:
 			TranslationServer.set_locale("en")
 		
+
+
+func _on_going_crazy_timer_timeout() -> void:
+	ui_layer.play_timeout_score_effect(score * timeout_score)
+	score *= 1 + timeout_score
