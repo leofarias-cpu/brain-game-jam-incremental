@@ -22,17 +22,20 @@ func _on_timer_timeout() -> void:
 	
 	if duration < 0:
 		self.modulate = Color.FIREBRICK
-		
+
 	
 func stop():
 	timer.stop()
 
 func play_timeout_effect(value: int):
+	AudioManager.play_sound(AudioManager.SOUND_EFFECTS.TIMEOUT)
+	
 	effect_label.text = "+ %s!!!!" % value
 	effect_label.visible = true
 	
 	var tween = get_tree().create_tween()
-	var position = tween.tween_property(effect_label, "offset_transform_position", Vector2(10, 40), 0.5)
+	var facing_direction = Vector2.from_angle(deg_to_rad(randf_range(0, 360))).normalized()
+	var position = tween.tween_property(effect_label, "offset_transform_position", Vector2(40, 40) * facing_direction, 1)
 	await position.finished
 	
 	effect_label.visible = false

@@ -15,8 +15,6 @@ var free_bullets: Array[Bullet]
 var direction_y := 1
 var direction_x := 1
 
-func _ready():
-	reset()
 
 func _physics_process(delta: float) -> void:
 	move_and_collide(velocity * direction_y * delta)
@@ -29,8 +27,10 @@ func shoot():
 	velocity.y = 0
 	await hand.in_position
 	
-	for b in free_bullets:
-		var bullet: Bullet = free_bullets.pop_front()
+	while not free_bullets.is_empty():
+		AudioManager.play_sound(AudioManager.SOUND_EFFECTS.SHOOT)
+
+		var bullet: Bullet = free_bullets.pop_back()
 		
 		bullet.global_position = bullet_spawn_point.global_position
 		bullet.rotation = rotation
@@ -63,18 +63,26 @@ func reset():
 		for i in diff:
 			add_bullet()
 	
+	print("diff: %s \nfree: %s\nflying: %s \n" % [diff, free_bullets.size(), flying_bullets.size()])
+	
 	velocity.y = stats.speed * randf_range(0.5, 2)
 	await get_tree().create_timer(0.5).timeout
 	velocity.y = stats.speed
+	
+	for bullet in free_bullets:
+		bullet.go_crazy = false
+	for bullet in flying_bullets:
+		bullet.go_crazy = false
+	
 	shoot()
 
 func reset_bullet(bullet: Bullet):
 	bullet.position = self.position
 	bullet.visible = false
 	bullet.disabled = true
-	bullet.go_crazy = false
 	
 	free_bullets.push_back(bullet)
+	flying_bullets.erase(bullet)
 	if free_bullets.size() == stats.bullet_amount:
 		shoot()
 

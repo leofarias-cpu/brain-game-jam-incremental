@@ -26,7 +26,6 @@ class_name Game extends Node2D
 @export_group("Enemy Stats")
 @export var ball_stats: BallStats
 @export var shooter_stats: ShooterStats
-@export var bulle_amount: int = 3
 var next_shooter_direction = 1
 
 @export_group("UI")

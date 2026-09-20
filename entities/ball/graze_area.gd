@@ -7,7 +7,7 @@ func _draw() -> void:
 	self.modulate = Color.TRANSPARENT
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Projectile:
+	if area is Grazeable:
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, 'modulate', Color(0.431, 0.865, 0.51, 1.0), 0.2)
 		tween.tween_property(self, 'modulate', Color(1.0, 1.0, 1.0, 0), 0.1)

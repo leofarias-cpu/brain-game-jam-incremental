@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdbi5j1lx0ri"]
 
 [ext_resource type="Texture2D" uid="uid://csk2d31lf5e4p" path="res://assets/timer bola branco.svg" id="1_fqo5a"]
-[ext_resource type="Script" uid="uid://btg2pjo8r11ef" path="res://progress_bar.gd" id="1_r58go"]
+[ext_resource type="Script" uid="uid://btg2pjo8r11ef" path="res://ui/timer/progress_bar.gd" id="1_r58go"]
 [ext_resource type="Texture2D" uid="uid://ml0y1jqefkbt" path="res://assets/timer bola preto.svg" id="2_qckt5"]
 
 [node name="ProgressBar" type="TextureProgressBar" unique_id=671674136]

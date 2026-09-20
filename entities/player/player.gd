@@ -48,6 +48,8 @@ func _on_graze_area_area_entered(area: Area2D) -> void:
 	if invincible: return
 	
 	if area is Grazeable:
+		AudioManager.play_sound(AudioManager.SOUND_EFFECTS.GRAZE)
+		
 		graze.emit(area.get_graze_value())
 		var tween := get_tree().create_tween()
 		tween.tween_property(sprite, 'modulate', Color(0.431, 0.865, 0.51, 1.0), 0.2)
@@ -56,6 +58,11 @@ func _on_graze_area_area_entered(area: Area2D) -> void:
 func _on_hitbox_area_entered(_area: Area2D) -> void:
 	if invincible: return
 	
+	if hp % 2 == 0:
+		AudioManager.play_sound(AudioManager.SOUND_EFFECTS.HIT_1)
+	else:
+		AudioManager.play_sound(AudioManager.SOUND_EFFECTS.HIT_2)
+		
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite, 'modulate', Color(0.99, 0.33, 0.198, 1.0), 0.3)
 	

@@ -19,13 +19,11 @@ class_name Shooter extends Node2D
 		hand.direction = v
 
 func _ready():
-	arrow_guy.stats = stats
 	reset()
 
 func reset():
 	var play_space: PlaySpace = game.play_space
 	arrow_guy.stats = stats
-	
 	if direction == 1:
 		position.x = -play_space.width / 2 - 30 + play_space.border_width
 	else:
@@ -34,6 +32,7 @@ func reset():
 	lower_bound = play_space.global_position.y -play_space.height / 2 + play_space.border_width
 	upper_bound = play_space.global_position.y + play_space.height / 2 - play_space.border_width
 	
+	print("Resetaivos o cara")
 	arrow_guy.reset()
 	hand.reset()
 	

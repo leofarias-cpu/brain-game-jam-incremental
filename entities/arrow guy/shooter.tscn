@@ -8,24 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://csygqc3rkwmxh" path="res://assets/Shape Characters/Vector/overview.svg" id="4_xpig6"]
 [ext_resource type="Script" uid="uid://cn5y4st42t8se" path="res://entities/arrow guy/shooter_guy_hand.gd" id="7_xpig6"]
 
-[sub_resource type="Resource" id="Resource_fpx42"]
+[sub_resource type="Resource" id="Resource_boo3m"]
 script = ExtResource("3_3d0vn")
 graze = 5
-speed = 40.0
+speed = 20.0
 metadata/_custom_type_script = "uid://f0lxmjsgx6ui"
 
-[sub_resource type="Resource" id="Resource_08nj3"]
+[sub_resource type="Resource" id="Resource_xpig6"]
 script = ExtResource("3_fpx42")
-bullet_stats = SubResource("Resource_fpx42")
-bullet_amount = 6
-speed = 20.0
+bullet_stats = SubResource("Resource_boo3m")
+bullet_amount = 4
 metadata/_custom_type_script = "uid://bblpm1hk8wrtx"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tga20"]
 radius = 1.0
 
-[node name="ArrowGuy" type="Node2D" unique_id=1433081060 node_paths=PackedStringArray("arrow_guy", "hand")]
+[node name="ArrowGuy" type="Node2D" unique_id=1433081060 node_paths=PackedStringArray("arrow_guy", "hand") groups=["enemies"]]
 script = ExtResource("1_3d0vn")
+stats = SubResource("Resource_xpig6")
 arrow_guy = NodePath("ArrowGuy")
 hand = NodePath("Hand")
 
@@ -35,7 +35,6 @@ collision_mask = 0
 script = ExtResource("1_fpx42")
 bullet_scene = ExtResource("2_0au16")
 bullet_spawn_point = NodePath("../Hand/BulletSpawnPoint")
-stats = SubResource("Resource_08nj3")
 hand = NodePath("../Hand")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowGuy" unique_id=890313536]

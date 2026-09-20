@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Upgrade" format=3 uid="uid://bcx16oy0f484e"]
+[gd_resource type="Resource" format=3 uid="uid://bcx16oy0f484e"]
 
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_x8fap"]
-[ext_resource type="Script" uid="uid://cyd5pn1tdumoj" path="res://systems/upgrade/Upgrade.gd" id="2_qban0"]
+[ext_resource type="Script" uid="uid://b2mev0l34g8xs" path="res://systems/upgrade/upgrades/shooter_more_bullets/shooter_more_bullets.gd" id="2_x8fap"]
 
 [sub_resource type="Curve" id="Curve_x8fap"]
 _limits = [1.0, 150000.0, 1.0, 4.0]
@@ -9,7 +9,7 @@ _data = [Vector2(1, 600), 0.0, 0.0, 0, 0, Vector2(2, 1500), 0.0, 0.0, 0, 0, Vect
 point_count = 4
 
 [resource]
-script = ExtResource("2_qban0")
+script = ExtResource("2_x8fap")
 cost_curve = SubResource("Curve_x8fap")
 max_upgrades = 3
 title = "+ 1 Rhombus Bullet"

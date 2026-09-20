@@ -15,8 +15,6 @@ func _notification(what: int) -> void:
 		translate_text()
 
 func _ready() -> void:
-	print(upgrade.resource_path.get_file().get_basename() + "_title")
-
 	cost.text = "$%s" % upgrade.get_next_upgrade_cost()
 	cost.text = "$%s" % upgrade.get_next_upgrade_cost()
 	
@@ -48,7 +46,8 @@ func _on_mouse_exited() -> void:
 func _on_pressed() -> void:
 	upgrade.upgrade()
 	bought.emit(upgrade)
-	
+	AudioManager.play_sound(AudioManager.SOUND_EFFECTS.PURCHASED)
+
 	if upgrade.current_upgrades == upgrade.max_upgrades:
 		disable()
 		cost.text = ":)"

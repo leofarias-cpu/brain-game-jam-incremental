@@ -240,11 +240,19 @@ effect_label = NodePath("EffectLabel")
 
 [node name="EffectLabel" type="RichTextLabel" parent="UI Layer/MarginContainer/HBoxContainer/Timer" unique_id=955285399]
 visible = false
-layout_mode = 0
-offset_right = 54.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.69200003
+anchor_top = 1.0
+anchor_right = 1.6400001
+anchor_bottom = 1.8000001
+offset_left = 0.3999977
+grow_horizontal = 2
+grow_vertical = 2
 offset_transform_enabled = true
 text = "+ 10!!"
+fit_content = true
+autowrap_mode = 0
 
 [node name="ProgressBar" parent="UI Layer/MarginContainer/HBoxContainer" unique_id=671674136 instance=ExtResource("14_8ssvi")]
 custom_maximum_size = Vector2(50, 50)

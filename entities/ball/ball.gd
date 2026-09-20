@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 		# + random to avoid a ball bouncing perfectly in a straight line
 		facing_direction = (facing_direction.bounce(collision.get_normal())  + Vector2.ONE * randf_range(-0.4, 0.4)).normalized()
 		move_and_collide(reflect)
+		AudioManager.play_sound(AudioManager.SOUND_EFFECTS.BALL_BOUNCE)
 
 func go_crazy():
 	var tween = get_tree().create_tween().set_parallel()

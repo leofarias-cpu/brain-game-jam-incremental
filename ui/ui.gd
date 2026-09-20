@@ -57,7 +57,8 @@ func start_timer(duration: int):
 
 func _on_game_money_set(value: int) -> void:
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	tween.tween_property(money, 'text', "$" + str(value), 1)
+	tween.tween_property(money, 'text', "$" + str(value), 3)
+
 	
 func play_timeout_score_effect(value: float):
 	timer.play_timeout_effect(ceilf(value))

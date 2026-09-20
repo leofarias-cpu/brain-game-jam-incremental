@@ -5,13 +5,13 @@
 
 [sub_resource type="Curve" id="Curve_ubcp4"]
 _limits = [1.0, 100000.0, 1.0, 4.0]
-_data = [Vector2(1, 50), 0.0, 0.0, 0, 0, Vector2(2, 500), 0.0, 0.0, 0, 0, Vector2(3, 15000), 0.0, 0.0, 0, 0, Vector2(4, 60000), 0.0, 0.0, 0, 0]
+_data = [Vector2(1, 50), 0.0, 0.0, 0, 0, Vector2(2, 5000), 0.0, 0.0, 0, 0, Vector2(3, 15000), 0.0, 0.0, 0, 0, Vector2(4, 60000), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]
 script = ExtResource("2_pvwmp")
 cost_curve = SubResource("Curve_ubcp4")
-max_upgrades = 4
+max_upgrades = 2
 title = "+1 Rhombus"
 description = "👉"
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"

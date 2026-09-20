@@ -5,6 +5,8 @@ class_name RoundStartButton extends Button
 
 func _on_pressed() -> void:
 	game.round_start()
+	AudioManager.play_sound(AudioManager.SOUND_EFFECTS.ROUND_START)
+
 
 
 func _on_mouse_entered() -> void:
