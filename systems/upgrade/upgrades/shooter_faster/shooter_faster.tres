@@ -11,7 +11,7 @@ point_count = 3
 [resource]
 script = ExtResource("2_4703x")
 cost_curve = SubResource("Curve_p2m0o")
-max_upgrades = 10
+max_upgrades = 3
 title = "Faster bullets"
 description = "Bullets give 50% more score but are faster."
 metadata/_custom_type_script = "uid://cyd5pn1tdumoj"
